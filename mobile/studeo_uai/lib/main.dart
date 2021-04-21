@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studeo_uai/challenge/challenge_page.dart';
 import 'package:studeo_uai/core/app_widget.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'StudeoUAI',
       debugShowCheckedModeBanner: false,
-      home: AppWidget(),
+      home: ChallengePage(),
     );
   }
 }
