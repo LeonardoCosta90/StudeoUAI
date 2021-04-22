@@ -18,15 +18,15 @@ class QuizWidget extends StatelessWidget {
           ),
           SizedBox(height: 24),
           AnswerWidget(
-            isRight: false,
-            isSelected: true,
-            title: 'Kit de desenvolvimento de \n inteface de usuário',
-          ),
-          AnswerWidget(
             isRight: true,
             isSelected: true,
             title:
                 'Possibilita a criação de aplicativos\ncompilados nativamente',
+          ),
+          AnswerWidget(
+            isRight: false,
+            isSelected: true,
+            title: 'Kit de desenvolvimento de \n inteface de usuário',
           ),
           AnswerWidget(
             title: 'Acho que é uma marca de café\ndo Himalia',

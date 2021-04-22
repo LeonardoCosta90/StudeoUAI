@@ -22,7 +22,7 @@ class _ChallengePageState extends State<ChallengePage> {
         ),
       ),
       body: QuizWidget(
-        title: 'O que o Flutter faz em sua totalidade?',
+        title: 'O que o Flutter faz em sua totalidade??',
       ),
     );
   }
