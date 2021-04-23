@@ -78,14 +78,14 @@ class _ChallengePageState extends State<ChallengePage> {
                 if (value < widget.questions.length)
                   Expanded(
                     child: NextButtonWidget.white(
-                      label: 'Skip',
+                      label: 'Pular',
                       onTap: nextPage,
                     ),
                   ),
                 if (value == widget.questions.length)
                   Expanded(
                     child: NextButtonWidget.green(
-                      label: 'Confirm',
+                      label: 'Confirmar',
                       onTap: () {
                         Navigator.pop(context);
                       },

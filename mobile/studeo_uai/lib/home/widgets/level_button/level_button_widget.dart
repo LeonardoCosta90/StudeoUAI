@@ -7,7 +7,7 @@ import 'package:studeo_uai/core/app_colors.dart';
 class LevelButtonWidget extends StatelessWidget {
   final String label;
   LevelButtonWidget({Key? key, required this.label})
-      : assert(['Fácil', 'Médio', 'Difícil', 'Perito'].contains(label)),
+      : assert(['Fácil', 'Médio', 'Difícil', 'Jedi'].contains(label)),
         super(key: key);
 
   final config = {
@@ -26,7 +26,7 @@ class LevelButtonWidget extends StatelessWidget {
       'borderColor': AppColors.levelButtonBorderHard,
       'fontColor': AppColors.levelButtonTextHard,
     },
-    'Perito': {
+    'Jedi': {
       'color': AppColors.levelButtonExpert,
       'borderColor': AppColors.levelButtonBorderExpert,
       'fontColor': AppColors.levelButtonTextExpert,
