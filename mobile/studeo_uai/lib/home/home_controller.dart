@@ -1,13 +1,11 @@
+import 'package:studeo_uai/home/home_repository.dart';
+import 'package:studeo_uai/home/home_state.dart';
 import 'package:flutter/foundation.dart';
 
-import 'home_repository.dart';
-import 'home_state.dart';
-import 'package:studeo_uai/shared/models/quiz_model.dart';
-import 'package:studeo_uai/shared/models/user_model.dart';
+import '../shared/models/models.dart';
 
 class HomeController {
-  ValueNotifier<HomeState> stateNotifier =
-      ValueNotifier<HomeState>(HomeState.empty);
+  final stateNotifier = ValueNotifier<HomeState>(HomeState.empty);
   set state(HomeState state) => stateNotifier.value = state;
   HomeState get state => stateNotifier.value;
 
@@ -18,14 +16,12 @@ class HomeController {
 
   void getUser() async {
     state = HomeState.loading;
-    await Future.delayed(Duration(seconds: 2));
     user = await repository.getUser();
     state = HomeState.success;
   }
 
   void getQuizzes() async {
     state = HomeState.loading;
-    await Future.delayed(Duration(seconds: 2));
     quizzes = await repository.getQuizzes();
     state = HomeState.success;
   }
