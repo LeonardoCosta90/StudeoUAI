@@ -1,7 +1,6 @@
-import 'package:studeo_uai/core/app_gradients.dart';
-import 'package:studeo_uai/core/app_images.dart';
+import 'package:studeo_uai/core/core.dart';
+import 'package:studeo_uai/home/home.dart';
 import 'package:flutter/material.dart';
-import 'package:studeo_uai/home/home_page.dart';
 
 class SplashPage extends StatelessWidget {
   @override

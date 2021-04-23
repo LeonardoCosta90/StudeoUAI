@@ -1,47 +1,46 @@
 import 'dart:convert';
 
-import 'question_model.dart';
+import 'models.dart';
 
-enum Level { easy, middle, hard, expert }
+enum Level { facil, medio, dificil, perito }
 
-extension LevelStringExtension on String {
-  Level get parse => {
-    'easy': Level.easy, 
-    'middle': Level.middle, 
-    'hard': Level.hard, 
-    'expert': Level.expert
-  }[this]!;
+extension LevelStringExt on String {
+  Level get levelParse => {
+        "facil": Level.facil,
+        "medio": Level.medio,
+        "dificil": Level.dificil,
+        "perito": Level.perito
+      }[this]!;
 }
 
-extension LevelExtension on Level {
+extension LevelExt on Level {
   String get parse => {
-    Level.easy: 'easy' , 
-    Level.middle: 'middle' , 
-    Level.hard: 'hard' , 
-    Level.expert: 'expert',
-  }[this]!;
+        Level.facil: "facil",
+        Level.medio: "medio",
+        Level.dificil: "dificil",
+        Level.perito: "perito",
+      }[this]!;
 }
 
 class QuizModel {
   final String title;
   final List<QuestionModel> questions;
-  final int questionAnswered;
+  final int questionsAnswered;
   final String image;
   final Level level;
 
-  QuizModel({
-    required this.title,
-    required this.questions,
-    this.questionAnswered = 0,
-    required this.image,
-    required this.level,
-  });
+  QuizModel(
+      {this.questionsAnswered = 0,
+      required this.image,
+      required this.level,
+      required this.title,
+      required this.questions});
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
       'questions': questions.map((x) => x.toMap()).toList(),
-      'questionAnswered': questionAnswered,
+      'questionsAnswered': questionsAnswered,
       'image': image,
       'level': level.parse,
     };
@@ -51,10 +50,10 @@ class QuizModel {
     return QuizModel(
       title: map['title'],
       questions: List<QuestionModel>.from(
-          map['questions']?.map((x) => QuestionModel.fromMap(x))),
-      questionAnswered: map['questionAnswered'],
+          map['questions'].map((x) => QuestionModel.fromMap(x))),
+      questionsAnswered: map['questionsAnswered'],
       image: map['image'],
-      level: map['level'].toString().parse,
+      level: map['level'].toString().levelParse,
     );
   }
 

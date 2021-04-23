@@ -5,11 +5,7 @@ class UserModel {
   final String photoUrl;
   final int score;
 
-  UserModel({
-    required this.name,
-    required this.photoUrl,
-    this.score = 0,
-  });
+  UserModel({required this.name, required this.photoUrl, this.score = 0});
 
   Map<String, dynamic> toMap() {
     return {
@@ -29,6 +25,6 @@ class UserModel {
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) => 
+  factory UserModel.fromJson(String source) =>
       UserModel.fromMap(json.decode(source));
 }

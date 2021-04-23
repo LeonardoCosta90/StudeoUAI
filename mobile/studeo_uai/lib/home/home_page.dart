@@ -1,28 +1,25 @@
 import 'package:studeo_uai/challenge/challenge_page.dart';
-import 'package:flutter/material.dart';
-
-import 'home_controller.dart';
-import 'package:studeo_uai/core/core.dart';
-import 'package:studeo_uai/home/widgets/appbar/app_bar_widget.dart';
+import 'package:studeo_uai/home/home_controller.dart';
+import 'package:studeo_uai/home/home_state.dart';
 import 'package:studeo_uai/home/widgets/level_button/level_button_widget.dart';
 import 'package:studeo_uai/home/widgets/quiz_card/quiz_card_widget.dart';
-
-import 'home_state.dart';
+import 'package:studeo_uai/home/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    controller.getUser();
     controller.getQuizzes();
+    controller.getUser();
     controller.stateNotifier.addListener(() {
       setState(() {});
     });
@@ -32,53 +29,66 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     if (controller.state == HomeState.success) {
       return Scaffold(
-        appBar: AppBarWidget(user: controller.user!),
+        appBar: AppBarWidget(user: controller.user),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
               SizedBox(
-                height: 32,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
+                height: 24,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    LevelButtonWidget(label: 'Fácil'),
-                    SizedBox(width: 10),
-                    LevelButtonWidget(label: 'Médio'),
-                    SizedBox(width: 10),
-                    LevelButtonWidget(label: 'Difícil'),
-                    SizedBox(width: 10),
-                    LevelButtonWidget(label: 'Jedi'),
+                    LevelButtonWidget(
+                      label: "Fácil",
+                    ),
+                    LevelButtonWidget(
+                      label: "Médio",
+                    ),
+                    LevelButtonWidget(
+                      label: "Difícil",
+                    ),
+                    LevelButtonWidget(
+                      label: "Jedi",
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(
+                height: 24,
+              ),
               Expanded(
                 child: GridView.count(
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
                   crossAxisCount: 2,
+                  scrollDirection: Axis.vertical,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                  shrinkWrap: true,
                   children: controller.quizzes!
-                      .map(
-                        (e) => QuizCardWidget(
-                          title: e.title,
-                          completed:
-                              '${e.questionAnswered}/${e.questions.length}',
-                          onTap: () {
-                            Navigator.push(
-                                context,
+                      .map((quiz) => QuizCardWidget(
+                            percent:
+                                quiz.questionsAnswered / quiz.questions.length,
+                            imageUrl: quiz.image,
+                            title: quiz.title,
+                            completed:
+                                "${quiz.questionsAnswered}/${quiz.questions.length}",
+                            onTap: () {
+                              Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      ChallengePage(questions: e.questions),
-                                ));
-                          },
-                          percent: e.questionAnswered / e.questions.length,
-                        ),
-                      )
+                                  builder: (context) => ChallengePage(
+                                    questions: quiz.questions,
+                                    title: quiz.title,
+                                  ),
+                                ),
+                              );
+                            },
+                          ))
                       .toList(),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -86,9 +96,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       return Scaffold(
         body: Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(AppColors.darkGreen),
-          ),
+          child: CircularProgressIndicator(),
         ),
       );
     }
