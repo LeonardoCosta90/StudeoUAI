@@ -19,35 +19,32 @@ class AppBarWidget extends PreferredSize {
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                   width: double.maxFinite,
                   decoration: BoxDecoration(gradient: AppGradients.linear),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text.rich(
-                          TextSpan(
-                            text: 'Olá, ',
-                            style: AppTextStyles.title,
-                            children: [
-                              TextSpan(
-                                  text: user.name,
-                                  style: AppTextStyles.titleBold),
-                            ],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text.rich(
+                        TextSpan(
+                          text: 'Olá, ',
+                          style: AppTextStyles.title,
+                          children: [
+                            TextSpan(
+                                text: user.name,
+                                style: AppTextStyles.titleBold),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 58,
+                        width: 58,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: NetworkImage(user.photoUrl),
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        Container(
-                          height: 58,
-                          width: 58,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: NetworkImage(user.photoUrl),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 Align(

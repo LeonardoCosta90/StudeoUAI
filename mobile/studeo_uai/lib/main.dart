@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:studeo_uai/challenge/challenge_page.dart';
 
 import 'package:studeo_uai/home/home_page.dart';
-import 'package:studeo_uai/splash/splash_page.dart';
 //import 'package:devquiz/challenge/challenge_page.dart';
 // import 'package:devquiz/splash/splash_page.dart';
 

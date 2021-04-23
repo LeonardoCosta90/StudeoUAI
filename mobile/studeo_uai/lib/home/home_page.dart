@@ -1,3 +1,4 @@
+import 'package:studeo_uai/challenge/challenge_page.dart';
 import 'package:flutter/material.dart';
 
 import 'home_controller.dart';
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(width: 10),
                     LevelButtonWidget(label: 'Difícil'),
                     SizedBox(width: 10),
-                    LevelButtonWidget(label: 'Perito'),
+                    LevelButtonWidget(label: 'Jedi'),
                   ],
                 ),
               ),
@@ -60,12 +61,19 @@ class _HomePageState extends State<HomePage> {
                   crossAxisCount: 2,
                   children: controller.quizzes!
                       .map(
-                        (element) => QuizCardWidget(
-                          title: element.title,
+                        (e) => QuizCardWidget(
+                          title: e.title,
                           completed:
-                              '${element.questionAnswered}/${element.questions.length}',
-                          percent: element.questionAnswered /
-                              element.questions.length,
+                              '${e.questionAnswered}/${e.questions.length}',
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ChallengePage(questions: e.questions),
+                                ));
+                          },
+                          percent: e.questionAnswered / e.questions.length,
                         ),
                       )
                       .toList(),
