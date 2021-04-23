@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DevQuiz',
       debugShowCheckedModeBanner: false,
-      home: ChallengePage(),
+      home: HomePage(),
     );
   }
 }
