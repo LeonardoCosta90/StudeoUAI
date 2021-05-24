@@ -12,10 +12,10 @@ export function Logo({ ...rest }: LogoProps) {
       {...rest}
     >
       
-      <Text as="span" color="purple.500" marginLeft="1">
+      <Text as="span" color="purple.500">
       STUDEO
       </Text>
-      <Text as="span" color="green.500" marginLeft="1">
+      <Text as="span" color="green.500" >
       UAI
       </Text>
     </Text>

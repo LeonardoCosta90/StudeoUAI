@@ -53,7 +53,7 @@ export default function SignIn() {
             size="lg"
            
           >
-            Entrar
+            ENTRAR
           </Button>
           <Button
             type="submit"
