@@ -1,31 +1,71 @@
-import { Flex, Button, Stack,  FormLabel, FormControl } from '@chakra-ui/react'
-import { Input } from '../components/form/input'
+import { Button, Flex, Stack } from '@chakra-ui/react';
+
+
+import { Input } from '../components/Form/Input'
+import { Logo } from '../components/Logo/index';
+
+type SignInFormData = {
+  email: string;
+  password: string;
+};
+
 
 export default function SignIn() {
   return (
-    <Flex 
-      w="100vw"
-       h="100vh"
-       align="center" 
-       justify="center">
-
-      <Flex  
-        as="form" 
-        width="100%" 
-        maxWidth={360} 
-        bg="gray.800" 
-        p="8" 
-        borderRadius="8"
-         flexDir="column"
-        >
-          <Stack spacing="4">            
-            <Input name="email" type="email" label="E-mail"></Input>
-            <Input name="password" type="password" label="Senha"></Input>            
-          </Stack>
+    <Flex
+      width="100vw"
+      height="100vh"
+      align="center"
+      justify="center"
+      direction="column"
+    ><Logo width="auto" fontSize="4xl" />
+      <Stack width="100%" maxWidth={360} align="center" spacing="10">
         
-      <Button type="submit" mt="6" colorScheme="purple">Entrar</Button>
-      <Button type="submit" mt="4" colorScheme="purple" variant="outline">Cadastrar</Button>
-      </Flex>
+        <Flex
+          as="form"
+          width="100%"
+          maxWidth={360}
+          bg="gray.800"
+          padding="8"
+          borderRadius={8}
+          flexDir="column"
+          
+        >
+          <Stack spacing="4">
+            <Input
+              name="email"
+              label="E-mail"
+              type="email"
+              
+            />
+            <Input
+              name="password"
+              label="Senha"
+              type="password"
+              
+            />
+          </Stack>
+
+          <Button
+            type="submit"
+            mt="6"
+            colorScheme="purple"
+            size="lg"
+           
+          >
+            Entrar
+          </Button>
+          <Button
+            type="submit"
+            variant="outline"
+            mt="6"
+            colorScheme="purple"
+            size="lg"           
+          >
+            REGISTRAR
+          </Button>
+        </Flex>
+      </Stack>
     </Flex>
-  )
+  );
 }
