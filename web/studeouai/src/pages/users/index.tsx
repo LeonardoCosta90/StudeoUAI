@@ -3,16 +3,17 @@ import {
   Button,
   Checkbox,
   Divider,
-Flex,
-Heading,
-Icon,
-Table,
-Tbody,
-Td,
-Text,
-Th,
-Thead,
-Tr
+  Flex,
+  Heading,
+  Icon,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useBreakpointValue
 } from '@chakra-ui/react';
 import { RiAddBoxLine, RiAddLine, RiPencilLine } from 'react-icons/ri';
 
@@ -21,6 +22,10 @@ import { Pagination } from '../../components/Pagination';
 import { Sidebar } from '../../components/Sidebar';
 
 export default function UsersList() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  })
 
   return (
     <Box>
@@ -40,16 +45,16 @@ export default function UsersList() {
             <Heading size="lg" fontWeight="normal">
               Usuários
             </Heading>
-              <Button
-                as="a"
-                size="sm"
-                fontSize="sm"
-                colorScheme="purple"
-                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-              >
-                Cadastrar Usuário
+            <Button
+              as="a"
+              size="sm"
+              fontSize="sm"
+              colorScheme="purple"
+              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+            >
+              Cadastrar Usuário
               </Button>
-          
+
           </Flex>
           <Divider marginY="6" borderColor="gray.700" />
           <Table colorScheme="whiteAlpha">
@@ -59,8 +64,8 @@ export default function UsersList() {
                   <Checkbox colorScheme="purple" />
                 </Th>
                 <Th>Usuário</Th>
-            <Th>Data de cadastro</Th>
-             <Th>TIPO</Th>
+                {isWideVersion && <Th>Data de cadastro</Th>}
+                <Th>TIPO</Th>
                 <Th width="8"></Th>
               </Tr>
             </Thead>
@@ -77,9 +82,10 @@ export default function UsersList() {
                     </Text>
                   </Box>
                 </Td>
-           <Td>24 de Maio, 2021 </Td>
-                 <Td>Instrutor</Td>
-                <Td>             
+                {isWideVersion && <Td>24 de Maio, 2021 </Td>}
+                <Td>Instrutor</Td>
+                <Td>
+                  {isWideVersion && (
                     <Button
                       as="a"
                       size="sm"
@@ -89,7 +95,7 @@ export default function UsersList() {
                     >
                       Editar
                     </Button>
-                  
+                  )}
                 </Td>
               </Tr>
             </Tbody>
@@ -106,9 +112,10 @@ export default function UsersList() {
                     </Text>
                   </Box>
                 </Td>
-                 <Td>24 de Maio, 2021 </Td>
-                 <Td>Instrutor </Td>
-                <Td>                 
+                {isWideVersion && <Td>24 de Maio, 2021 </Td>}
+                <Td>Instrutor </Td>
+                <Td>
+                  {isWideVersion && (
                     <Button
                       as="a"
                       size="sm"
@@ -118,12 +125,13 @@ export default function UsersList() {
                     >
                       Editar
                     </Button>
-                
+                  )}
+
                 </Td>
               </Tr>
             </Tbody>
           </Table>
-          <Pagination/>
+          <Pagination />
         </Box>
       </Flex>
     </Box>
