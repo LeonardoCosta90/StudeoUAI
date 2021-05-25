@@ -16,15 +16,15 @@ export function Header() {
       px="6"
       align="center"
     >
-      <Logo/>
-     <SearchBox/>
+      <Logo />
+      <SearchBox />
       <Flex
         align="center"
         ml="auto"
       >
-        <NotificationsNav/>
-       <Profile/>
-        </Flex>
+        <NotificationsNav />
+        <Profile />
+      </Flex>
 
     </Flex>
   )
