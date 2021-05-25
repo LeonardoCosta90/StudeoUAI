@@ -21,7 +21,7 @@ export function Header() {
       as="header"
       width="100%"
       height="20"
-      maxWidth={1480}
+      maxWidth={1680}
       marginX="auto"
       marginTop="4"
       paddingX="6"

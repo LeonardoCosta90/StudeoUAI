@@ -7,16 +7,17 @@ export function SidebarNav() {
         return (
                 <Stack spacing="12" align="flex-start">
                         <NavSection title="GERAL">
-                                <NavLink icon={RiDashboardLine}>Dashboard</NavLink>
-                                <NavLink icon={RiContactsLine}>Usuários</NavLink>
+                                <NavLink icon={RiDashboardLine} href="/dashboard">Dashboard</NavLink>
+                                <NavLink icon={RiContactsLine} href="/users">Usuários</NavLink>
+                                
                         </NavSection>
                         <NavSection title="NOTIFICAÇÕES">
-                                <NavLink icon={RiNotificationLine}>Notificações</NavLink>
+                                <NavLink icon={RiNotificationLine} href="/notifications">Notificações</NavLink>
                         </NavSection>
                         <NavSection title="AULAS">
-                                <NavLink icon={RiArtboardLine}>Flutter</NavLink>
-                                <NavLink icon={RiArtboardLine}>ReactJS</NavLink>
-                                <NavLink icon={RiArtboardLine}>Pneumática</NavLink>
+                                <NavLink icon={RiArtboardLine} href="classes/flutter">Flutter</NavLink>
+                                <NavLink icon={RiArtboardLine} href="classes/reactjs">ReactJS</NavLink>
+                                <NavLink icon={RiArtboardLine} href="classes/pneumatic">Pneumática</NavLink>
                         </NavSection>
                 </Stack>
         )

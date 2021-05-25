@@ -49,7 +49,7 @@ export default function Dashboard() {
 
       <Flex
         width="100%"
-        maxWidth={1480}
+        maxWidth={1680}
         marginY="6"
         marginX="auto"
         paddingX="6"

@@ -2,7 +2,7 @@ import { Button, Flex, Stack } from '@chakra-ui/react';
 
 
 import { Input } from '../components/Form/Input'
-import { Logo } from '../components/Logo/index';
+import { Logo } from '../components/Header/Logo';
 
 type SignInFormData = {
   email: string;
@@ -51,7 +51,7 @@ export default function SignIn() {
             mt="6"
             colorScheme="purple"
             size="lg"
-           
+           href="/dashboard"
           >
             ENTRAR
           </Button>

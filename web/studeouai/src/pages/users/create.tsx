@@ -34,7 +34,7 @@ export default function CreateUser() {
 
       <Flex
         width="100%"
-        maxWidth={1480}
+        maxWidth={1680}
         marginY="6"
         marginX="auto"
         paddingX="6"
@@ -154,13 +154,14 @@ export default function CreateUser() {
           <Flex marginTop="8" justify="flex-end">
             <HStack spacing="4">
               <Link href="/users" passHref>
-                <Button as="a" colorScheme="whiteAlpha">
+                <Button as="a" colorScheme="whiteAlpha" href="/users">
                   Cancelar
                 </Button>
               </Link>
               <Button
                 colorScheme="purple"
                 type="submit"
+                href="/users"
               >
                 Salvar
               </Button>

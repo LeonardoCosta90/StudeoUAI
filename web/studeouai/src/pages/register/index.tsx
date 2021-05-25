@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-import { Logo } from '../../components/Logo/index';
+import { Logo } from '../../components/Header/Logo';
 import { Input } from '../../components/Form/Input'
 
 type SignInFormData = {

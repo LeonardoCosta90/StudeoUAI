@@ -34,7 +34,7 @@ export default function UsersList() {
       <Flex
         width="100%"
         marginY="6"
-        maxWidth={1480}
+        maxWidth={1680}
         marginX="auto"
         paddingX="6"
       >
@@ -50,6 +50,7 @@ export default function UsersList() {
               size="sm"
               fontSize="sm"
               colorScheme="purple"
+              href="/users/create"
               leftIcon={<Icon as={RiAddLine} fontSize="20" />}
             >
               Cadastrar Usuário
