@@ -28,7 +28,7 @@ export default function SignIn() {
       direction="column"
     >
       <Stack width="100%" maxWidth={360} align="center">
-        <Logo width="auto" fontSize="4xl" />
+        <Logo/>
         <Flex
           as="form"
           width="100%"
