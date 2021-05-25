@@ -15,7 +15,7 @@ import { RiAddLine, RiDeleteBinLine, RiSaveLine } from 'react-icons/ri';
 
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
-import { Input } from '../../components/form/Input';
+import { Input } from '../../components/Form/Input';
 
 type CreateUserFormData = {
   name: string;
