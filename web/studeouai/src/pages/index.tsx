@@ -37,6 +37,7 @@ export default function Home({ product }: HomeProps) {
             mt="6"
             colorScheme="purple"
             size="lg"
+            href="/signin"
           >
             ENTRAR
           </Button>
