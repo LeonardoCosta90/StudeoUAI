@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  database_studeouai:
+    image: postgres
+    container_name: database_studeouai
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=studeouai-user
+      - POSTGRES_PASSWORD=studeouai-pass
+      - POSTGRES_DB=studeouai
+    volumes:
+      - pgdata:/data/postgres
+    networks:
+      - backend
+
+  studeouai-api_redis_1:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    restart: always
+
+  app:
+    build: .
+    container_name: studeouai
+    ports:
+      - 3333:3333
+      - 9229:9229
+    volumes:
+      - ./:/usr/app
+    networks:
+      - backend
+    links:
+      - database_studeouai
+    depends_on:
+      - database_studeouai
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  backend:
+    driver: "bridge"
