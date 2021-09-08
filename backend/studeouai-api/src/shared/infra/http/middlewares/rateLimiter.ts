@@ -14,7 +14,7 @@ const limiter = new RateLimiterRedis({
   storeClient: redisClient,
   keyPrefix: "rateLimiter",
   points: Number(process.env.REDIS_NUMBER_OF_REQUEST),
-  duration: Number(process.env.BETWEEN_REQUESTS),
+  duration: Number(process.env.REDIS_TIME_BETWEEN_REQUESTS),
 });
 
 export default async function rateLimiter(

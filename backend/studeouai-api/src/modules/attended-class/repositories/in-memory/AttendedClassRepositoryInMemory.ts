@@ -22,8 +22,6 @@ class AttendedClassRepositoryInMemory implements IAttendedClassRepository {
     const userId = await this.findByUserId(user_id);
     const attendedClass = await this.findById(class_id);
 
-    console.log(attendedClass);
-
     Object.assign(attendedClass, {
       class_id: class_id,
       user_id: userId,
