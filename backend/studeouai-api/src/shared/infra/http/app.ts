@@ -14,12 +14,11 @@ import createConnection from "@shared/infra/typeorm";
 import swaggerFile from "../../../swagger.json";
 import { router } from "./routes";
 import rateLimiter from "@shared/infra/http/middlewares/raterLimiter";
-import raterLimiter from "@shared/infra/http/middlewares/raterLimiter";
 
 createConnection();
 
 const app = express();
-//app.use(raterLimiter);
+app.use(rateLimiter);
 app.use(express.json());
 
 app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`));

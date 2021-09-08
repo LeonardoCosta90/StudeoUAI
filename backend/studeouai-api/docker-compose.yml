@@ -16,7 +16,7 @@ services:
     networks:
       - backend
 
-  studeouai-api_redis_1:
+  redis:
     image: redis:alpine
     ports:
       - 6379:6379
