@@ -1,0 +1,52 @@
+import { AppError } from '@shared/errors/appError';
+import { hash } from 'bcryptjs';
+import { getCustomRepository } from 'typeorm';
+import CreateUserRequest from '../models/CreateUserRequest';
+import { User } from '../typeorm/entities/User';
+import { UsersRepository } from '../typeorm/repositories/UsersRepository';
+
+export default class UserService {
+  async createUser({
+    name,
+    password,
+    email,
+    isAdmin,
+    avatar,
+  }: CreateUserRequest): Promise<User> {
+    const usersRepository = getCustomRepository(UsersRepository);
+    const emailExists = await usersRepository.findByEmail(email);
+
+    if (emailExists) {
+      throw new AppError('Email address already used.');
+    }
+
+    const passwordHash = await hash(
+      password,
+      Number(process.env.DEFAULT_HASH_SAULT),
+    );
+
+    const user = await usersRepository.create({
+      name,
+      password: passwordHash,
+      email,
+      isAdmin: false,
+      avatar: null,
+    });
+
+    await usersRepository.save(user);
+
+    return user;
+  }
+
+  async findUserById(id: string): Promise<User> {
+    const userRepository = getCustomRepository(UsersRepository);
+
+    const user = await userRepository.findOne(id);
+
+    if (!user) {
+      throw new AppError('User not found', 404);
+    }
+
+    return user;
+  }
+}

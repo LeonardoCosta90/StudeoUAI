@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/services/UserService.test.ts">
+    <testCase name="Test Pending Transaction Service Should return response object when call to create with success" duration="137"/>
+    <testCase name="Test Pending Transaction Service Should error when try create a exists user" duration="4"/>
+    <testCase name="Test Pending Transaction Service Should return response object when find user by id" duration="3"/>
+    <testCase name="Test Pending Transaction Service Should return error when call to user by id" duration="3"/>
+  </file>
+</testExecutions>

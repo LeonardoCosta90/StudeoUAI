@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="3" failures="1" errors="0" time="10.064">
+  <testsuite name="Test Create User Use Case" errors="0" failures="0" skipped="0" timestamp="2021-09-28T21:47:43" time="8.335" tests="2">
+    <testcase classname="Test Create User Use Case Should response 201 when call execute() with success" name="Test Create User Use Case Should response 201 when call execute() with success" time="0.009">
+    </testcase>
+    <testcase classname="Test Create User Use Case Should an error when call create a user existent" name="Test Create User Use Case Should an error when call create a user existent" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test user controller" errors="0" failures="1" skipped="0" timestamp="2021-09-28T21:47:51" time="1.465" tests="1">
+    <testcase classname="Test user controller Should response 201 when call execute() with success" name="Test user controller Should response 201 when call execute() with success" time="0.016">
+      <failure>Error: expect(jest.fn()).toBeCalledWith(...expected)
+
+Expected: 200
+
+Number of calls: 0
+    at /home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/controllers/UserController.test.ts:44:24
+    at step (/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/controllers/UserController.test.ts:33:23)
+    at Object.next (/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/controllers/UserController.test.ts:14:53)
+    at fulfilled (/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/controllers/UserController.test.ts:5:58)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

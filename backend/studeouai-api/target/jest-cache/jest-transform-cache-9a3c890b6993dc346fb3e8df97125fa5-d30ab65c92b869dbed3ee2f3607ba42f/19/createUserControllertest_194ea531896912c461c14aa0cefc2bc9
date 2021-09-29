@@ -1,0 +1,114 @@
+d49d11801d866205b0692677d41f9fcd
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+jest.mock('./createUserUseCase.ts');
+var appError_1 = require("@shared/errors/appError");
+require("reflect-metadata");
+var CreateUserController_1 = require("./CreateUserController");
+var express_1 = require("@jest-mock/express");
+var faker_1 = __importDefault(require("faker"));
+var createUserUseCase_1 = require("./createUserUseCase");
+var CreateUserUseCaseMock = createUserUseCase_1.CreateUserUseCase;
+describe('Test Create User Use Case', function () {
+    beforeEach(function () {
+        CreateUserUseCaseMock.prototype.execute.mockRestore();
+    });
+    test('Should response 201 when call execute() with success', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var createUserMock, req, res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    createUserMock = {
+                        name: faker_1.default.datatype.string(),
+                        password: faker_1.default.datatype.string(),
+                        email: faker_1.default.datatype.email,
+                    };
+                    req = (0, express_1.getMockReq)({
+                        body: { createUserMock: createUserMock },
+                    });
+                    res = (0, express_1.getMockRes)().res;
+                    CreateUserUseCaseMock.prototype.execute.mockResolvedValue();
+                    return [4 /*yield*/, CreateUserController_1.CreateUserController.prototype.handle(req, res)];
+                case 1:
+                    _a.sent();
+                    expect(res.status).toBeCalledWith(201);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    test('Should an error when call create a user existent', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var createUserMock, req, res, err_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    createUserMock = {
+                        name: faker_1.default.datatype.string(),
+                        password: faker_1.default.datatype.string(),
+                        email: faker_1.default.datatype.email,
+                    };
+                    req = (0, express_1.getMockReq)({
+                        body: { createUserMock: createUserMock },
+                    });
+                    res = (0, express_1.getMockRes)().res;
+                    CreateUserUseCaseMock.prototype.execute.mockResolvedValue();
+                    return [4 /*yield*/, CreateUserController_1.CreateUserController.prototype.handle(req, res)];
+                case 1:
+                    _a.sent();
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, CreateUserController_1.CreateUserController.prototype.handle(req, res)];
+                case 3:
+                    _a.sent();
+                    return [3 /*break*/, 5];
+                case 4:
+                    err_1 = _a.sent();
+                    console.log(err_1);
+                    expect(err_1).toBeInstanceOf(appError_1.AppError);
+                    expect(err_1.message).toEqual('User already exists');
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
+            }
+        });
+    }); });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvbGVvL0RvY3VtZW50b3MvcHJvamV0b3MvbWluZS9UQ0MvU3R1ZGVvVUFJL2JhY2tlbmQvc3R1ZGVvdWFpLWFwaS9zcmMvbW9kdWxlcy9hY2NvdW50cy91c2VDYXNlcy9jcmVhdGVVc2VyL2NyZWF0ZVVzZXJDb250cm9sbGVyLnRlc3QudHMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFTQSxJQUFJLENBQUMsSUFBSSxDQUFDLHdCQUF3QixDQUFDLENBQUM7QUFUcEMsb0RBQW1EO0FBQ25ELDRCQUEwQjtBQUMxQiwrREFBOEQ7QUFDOUQsOENBQTREO0FBQzVELGdEQUEwQjtBQUcxQix5REFBd0Q7QUFJeEQsSUFBTSxxQkFBcUIsR0FBRyxxQ0FBK0QsQ0FBQztBQUU5RixRQUFRLENBQUMsMkJBQTJCLEVBQUU7SUFDcEMsVUFBVSxDQUFDO1FBQ1QscUJBQXFCLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxXQUFXLEVBQUUsQ0FBQztJQUN4RCxDQUFDLENBQUMsQ0FBQztJQUVILElBQUksQ0FBQyxzREFBc0QsRUFBRTs7Ozs7b0JBRXJELGNBQWMsR0FBbUI7d0JBQ3JDLElBQUksRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRTt3QkFDN0IsUUFBUSxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFO3dCQUNqQyxLQUFLLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxLQUFLO3FCQUM1QixDQUFDO29CQUVLLEdBQUcsR0FBRyxJQUFBLG9CQUFVLEVBQUM7d0JBQ3RCLElBQUksRUFBRSxFQUFFLGNBQWMsZ0JBQUEsRUFBRTtxQkFDekIsQ0FBQyxDQUFDO29CQUVLLEdBQUcsR0FBSyxJQUFBLG9CQUFVLEdBQUUsSUFBakIsQ0FBa0I7b0JBRTdCLHFCQUFxQixDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsaUJBQWlCLEVBQUUsQ0FBQztvQkFDNUQscUJBQU0sMkNBQW9CLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxHQUFHLEVBQUMsR0FBRyxDQUFDLEVBQUE7O29CQUFwRCxTQUFvRCxDQUFDO29CQUVyRCxNQUFNLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxDQUFDLGNBQWMsQ0FBQyxHQUFHLENBQUMsQ0FBQzs7OztTQUN4QyxDQUFDLENBQUM7SUFFSCxJQUFJLENBQUMsa0RBQWtELEVBQUU7Ozs7O29CQUVqRCxjQUFjLEdBQW1CO3dCQUNyQyxJQUFJLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxNQUFNLEVBQUU7d0JBQzdCLFFBQVEsRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRTt3QkFDakMsS0FBSyxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsS0FBSztxQkFDNUIsQ0FBQztvQkFFSyxHQUFHLEdBQUcsSUFBQSxvQkFBVSxFQUFDO3dCQUN0QixJQUFJLEVBQUUsRUFBRSxjQUFjLGdCQUFBLEVBQUU7cUJBQ3pCLENBQUMsQ0FBQztvQkFFSyxHQUFHLEdBQUssSUFBQSxvQkFBVSxHQUFFLElBQWpCLENBQWtCO29CQUU3QixxQkFBcUIsQ0FBQyxTQUFTLENBQUMsT0FBTyxDQUFDLGlCQUFpQixFQUFFLENBQUM7b0JBQzVELHFCQUFNLDJDQUFvQixDQUFDLFNBQVMsQ0FBQyxNQUFNLENBQUMsR0FBRyxFQUFDLEdBQUcsQ0FBQyxFQUFBOztvQkFBcEQsU0FBb0QsQ0FBQzs7OztvQkFHbkQscUJBQU0sMkNBQW9CLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxHQUFHLEVBQUMsR0FBRyxDQUFDLEVBQUE7O29CQUFwRCxTQUFvRCxDQUFDOzs7O29CQUVyRCxPQUFPLENBQUMsR0FBRyxDQUFDLEtBQUcsQ0FBQyxDQUFDO29CQUNqQixNQUFNLENBQUMsS0FBRyxDQUFDLENBQUMsY0FBYyxDQUFDLG1CQUFRLENBQUMsQ0FBQztvQkFDckMsTUFBTSxDQUFDLEtBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQyxPQUFPLENBQUMscUJBQXFCLENBQUMsQ0FBQzs7Ozs7U0FHdEQsQ0FBQyxDQUFDO0FBRUwsQ0FBQyxDQUFDLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL2hvbWUvbGVvL0RvY3VtZW50b3MvcHJvamV0b3MvbWluZS9UQ0MvU3R1ZGVvVUFJL2JhY2tlbmQvc3R1ZGVvdWFpLWFwaS9zcmMvbW9kdWxlcy9hY2NvdW50cy91c2VDYXNlcy9jcmVhdGVVc2VyL2NyZWF0ZVVzZXJDb250cm9sbGVyLnRlc3QudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQXBwRXJyb3IgfSBmcm9tICdAc2hhcmVkL2Vycm9ycy9hcHBFcnJvcic7XG5pbXBvcnQgXCJyZWZsZWN0LW1ldGFkYXRhXCI7XG5pbXBvcnQgeyBDcmVhdGVVc2VyQ29udHJvbGxlciB9IGZyb20gJy4vQ3JlYXRlVXNlckNvbnRyb2xsZXInO1xuaW1wb3J0IHsgZ2V0TW9ja1JlcSwgZ2V0TW9ja1JlcyB9IGZyb20gJ0BqZXN0LW1vY2svZXhwcmVzcyc7XG5pbXBvcnQgZmFrZXIgZnJvbSAnZmFrZXInO1xuXG5pbXBvcnQgeyBJQ3JlYXRlVXNlckRUTyB9IGZyb20gJ0Btb2R1bGVzL2FjY291bnRzL2R0b3MvSUNyZWF0ZVVzZXJEVE8nO1xuaW1wb3J0IHsgQ3JlYXRlVXNlclVzZUNhc2UgfSBmcm9tIFwiLi9jcmVhdGVVc2VyVXNlQ2FzZVwiO1xuXG5qZXN0Lm1vY2soJy4vY3JlYXRlVXNlclVzZUNhc2UudHMnKTtcblxuY29uc3QgQ3JlYXRlVXNlclVzZUNhc2VNb2NrID0gQ3JlYXRlVXNlclVzZUNhc2UgYXMgamVzdC5Nb2NrZWRDbGFzczx0eXBlb2YgQ3JlYXRlVXNlclVzZUNhc2U+O1xuXG5kZXNjcmliZSgnVGVzdCBDcmVhdGUgVXNlciBVc2UgQ2FzZScsICgpID0+IHtcbiAgYmVmb3JlRWFjaCgoKSA9PiB7XG4gICAgQ3JlYXRlVXNlclVzZUNhc2VNb2NrLnByb3RvdHlwZS5leGVjdXRlLm1vY2tSZXN0b3JlKCk7XG4gIH0pO1xuXG4gIHRlc3QoJ1Nob3VsZCByZXNwb25zZSAyMDEgd2hlbiBjYWxsIGV4ZWN1dGUoKSB3aXRoIHN1Y2Nlc3MnLCBhc3luYyAoKSA9PiB7XG5cbiAgICBjb25zdCBjcmVhdGVVc2VyTW9jazogSUNyZWF0ZVVzZXJEVE8gPSB7XG4gICAgICBuYW1lOiBmYWtlci5kYXRhdHlwZS5zdHJpbmcoKSxcbiAgICAgIHBhc3N3b3JkOiBmYWtlci5kYXRhdHlwZS5zdHJpbmcoKSxcbiAgICAgIGVtYWlsOiBmYWtlci5kYXRhdHlwZS5lbWFpbCxcbiAgICB9O1xuXG4gICAgIGNvbnN0IHJlcSA9IGdldE1vY2tSZXEoe1xuICAgICAgYm9keTogeyBjcmVhdGVVc2VyTW9jayB9LFxuICAgIH0pO1xuXG4gICAgY29uc3QgeyByZXMgfSA9IGdldE1vY2tSZXMoKTtcblxuICAgIENyZWF0ZVVzZXJVc2VDYXNlTW9jay5wcm90b3R5cGUuZXhlY3V0ZS5tb2NrUmVzb2x2ZWRWYWx1ZSgpO1xuICAgIGF3YWl0IENyZWF0ZVVzZXJDb250cm9sbGVyLnByb3RvdHlwZS5oYW5kbGUocmVxLHJlcyk7XG5cbiAgICBleHBlY3QocmVzLnN0YXR1cykudG9CZUNhbGxlZFdpdGgoMjAxKTtcbiAgfSk7XG5cbiAgdGVzdCgnU2hvdWxkIGFuIGVycm9yIHdoZW4gY2FsbCBjcmVhdGUgYSB1c2VyIGV4aXN0ZW50JywgYXN5bmMgKCkgPT4ge1xuXG4gICAgY29uc3QgY3JlYXRlVXNlck1vY2s6IElDcmVhdGVVc2VyRFRPID0ge1xuICAgICAgbmFtZTogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgICBwYXNzd29yZDogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgICBlbWFpbDogZmFrZXIuZGF0YXR5cGUuZW1haWwsXG4gICAgfTtcblxuICAgICBjb25zdCByZXEgPSBnZXRNb2NrUmVxKHtcbiAgICAgIGJvZHk6IHsgY3JlYXRlVXNlck1vY2sgfSxcbiAgICB9KTtcblxuICAgIGNvbnN0IHsgcmVzIH0gPSBnZXRNb2NrUmVzKCk7XG5cbiAgICBDcmVhdGVVc2VyVXNlQ2FzZU1vY2sucHJvdG90eXBlLmV4ZWN1dGUubW9ja1Jlc29sdmVkVmFsdWUoKTtcbiAgICBhd2FpdCBDcmVhdGVVc2VyQ29udHJvbGxlci5wcm90b3R5cGUuaGFuZGxlKHJlcSxyZXMpO1xuXG4gICAgdHJ5e1xuICAgICAgYXdhaXQgQ3JlYXRlVXNlckNvbnRyb2xsZXIucHJvdG90eXBlLmhhbmRsZShyZXEscmVzKTtcbiAgICB9Y2F0Y2goZXJyKXtcbiAgICAgIGNvbnNvbGUubG9nKGVycik7XG4gICAgICBleHBlY3QoZXJyKS50b0JlSW5zdGFuY2VPZihBcHBFcnJvcik7XG4gICAgICBleHBlY3QoZXJyLm1lc3NhZ2UpLnRvRXF1YWwoJ1VzZXIgYWxyZWFkeSBleGlzdHMnKTtcbiAgICB9XG4gICAgXG4gIH0pO1xuXG59KTsiXSwidmVyc2lvbiI6M30=

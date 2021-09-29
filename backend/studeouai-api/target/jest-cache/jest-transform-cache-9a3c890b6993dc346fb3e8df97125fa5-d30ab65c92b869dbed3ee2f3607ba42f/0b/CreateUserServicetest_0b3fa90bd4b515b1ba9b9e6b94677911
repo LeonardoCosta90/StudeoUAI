@@ -1,0 +1,86 @@
+c453ac36beba75aa5469ed7a2aa0041d
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var typeorm_mock_1 = require("@modules/test/mock/typeorm.mock");
+var CreateUserService_1 = __importDefault(require("./CreateUserService"));
+var faker_1 = __importDefault(require("faker"));
+describe('Test Pending Transaction Service', function () {
+    beforeEach(function () {
+        typeorm_mock_1.repositoryMock.find.mockRestore();
+        typeorm_mock_1.repositoryMock.findOne.mockRestore();
+        typeorm_mock_1.repositoryMock.save.mockRestore();
+        typeorm_mock_1.repositoryMock.update.mockRestore();
+    });
+    test('Should return response object when call to create with success', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var createUserReturnMock, createUserMock, createUserService, response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    createUserReturnMock = {
+                        id: faker_1.default.datatype.uuid(),
+                        name: faker_1.default.datatype.string(),
+                        password: faker_1.default.datatype.string(),
+                        email: faker_1.default.internet.email(),
+                        isAdmin: false,
+                        avatar: faker_1.default.datatype.string(),
+                        avatar_url: faker_1.default.datatype.string(),
+                    };
+                    createUserMock = {
+                        name: faker_1.default.datatype.uuid(),
+                        password: faker_1.default.datatype.uuid(),
+                        email: faker_1.default.internet.email(),
+                        isAdmin: false,
+                        avatar: faker_1.default.datatype.string(),
+                    };
+                    typeorm_mock_1.repositoryMock.create.mockResolvedValue(createUserReturnMock);
+                    createUserService = new CreateUserService_1.default();
+                    return [4 /*yield*/, createUserService.execute(createUserMock)];
+                case 1:
+                    response = _a.sent();
+                    expect(response).toBe(createUserReturnMock);
+                    expect(response).toBeTruthy();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvbGVvL0RvY3VtZW50b3MvcHJvamV0b3MvbWluZS9UQ0MvU3R1ZGVvVUFJL2JhY2tlbmQvc3R1ZGVvdWFpLWFwaS9zcmMvbW9kdWxlcy9hY2NvdW50cy9zZXJ2aWNlcy9DcmVhdGVVc2VyU2VydmljZS50ZXN0LnRzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsZ0VBQWlFO0FBR2pFLDBFQUFvRDtBQUVwRCxnREFBMEI7QUFFMUIsUUFBUSxDQUFDLGtDQUFrQyxFQUFFO0lBQzNDLFVBQVUsQ0FBQztRQUNULDZCQUFjLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxDQUFDO1FBQ2xDLDZCQUFjLENBQUMsT0FBTyxDQUFDLFdBQVcsRUFBRSxDQUFDO1FBQ3JDLDZCQUFjLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxDQUFDO1FBQ2xDLDZCQUFjLENBQUMsTUFBTSxDQUFDLFdBQVcsRUFBRSxDQUFDO0lBQ3RDLENBQUMsQ0FBQyxDQUFDO0lBRUgsSUFBSSxDQUFDLGdFQUFnRSxFQUFFOzs7OztvQkFDL0Qsb0JBQW9CLEdBQXVCO3dCQUMvQyxFQUFFLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxJQUFJLEVBQUU7d0JBQ3pCLElBQUksRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRTt3QkFDN0IsUUFBUSxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFO3dCQUNqQyxLQUFLLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxLQUFLLEVBQUU7d0JBQzdCLE9BQU8sRUFBRSxLQUFLO3dCQUNkLE1BQU0sRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRTt3QkFDL0IsVUFBVSxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFO3FCQUNwQyxDQUFDO29CQUVJLGNBQWMsR0FBc0I7d0JBQ3hDLElBQUksRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLElBQUksRUFBRTt3QkFDM0IsUUFBUSxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsSUFBSSxFQUFFO3dCQUMvQixLQUFLLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxLQUFLLEVBQUU7d0JBQzdCLE9BQU8sRUFBRSxLQUFLO3dCQUNkLE1BQU0sRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRTtxQkFDaEMsQ0FBQztvQkFFRiw2QkFBYyxDQUFDLE1BQU0sQ0FBQyxpQkFBaUIsQ0FBQyxvQkFBb0IsQ0FBQyxDQUFDO29CQUV4RCxpQkFBaUIsR0FBRyxJQUFJLDJCQUFpQixFQUFFLENBQUM7b0JBQ2pDLHFCQUFNLGlCQUFpQixDQUFDLE9BQU8sQ0FBQyxjQUFjLENBQUMsRUFBQTs7b0JBQTFELFFBQVEsR0FBRyxTQUErQztvQkFFaEUsTUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDLElBQUksQ0FBQyxvQkFBb0IsQ0FBQyxDQUFDO29CQUM1QyxNQUFNLENBQUMsUUFBUSxDQUFDLENBQUMsVUFBVSxFQUFFLENBQUM7Ozs7U0FDL0IsQ0FBQyxDQUFDO0FBQ0wsQ0FBQyxDQUFDLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL2hvbWUvbGVvL0RvY3VtZW50b3MvcHJvamV0b3MvbWluZS9UQ0MvU3R1ZGVvVUFJL2JhY2tlbmQvc3R1ZGVvdWFpLWFwaS9zcmMvbW9kdWxlcy9hY2NvdW50cy9zZXJ2aWNlcy9DcmVhdGVVc2VyU2VydmljZS50ZXN0LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHJlcG9zaXRvcnlNb2NrIH0gZnJvbSAnQG1vZHVsZXMvdGVzdC9tb2NrL3R5cGVvcm0ubW9jayc7XG5pbXBvcnQgQ3JlYXRlVXNlclJlcXVlc3QgZnJvbSAnLi4vbW9kZWxzL0NyZWF0ZVVzZXJSZXF1ZXN0JztcbmltcG9ydCBDcmVhdGVVc2VyUmVzcG9uc2UgZnJvbSAnLi4vbW9kZWxzL0NyZWF0ZVVzZXJSZXNwb25zZSc7XG5pbXBvcnQgQ3JlYXRlVXNlclNlcnZpY2UgZnJvbSAnLi9DcmVhdGVVc2VyU2VydmljZSc7XG5cbmltcG9ydCBmYWtlciBmcm9tICdmYWtlcic7XG5cbmRlc2NyaWJlKCdUZXN0IFBlbmRpbmcgVHJhbnNhY3Rpb24gU2VydmljZScsICgpID0+IHtcbiAgYmVmb3JlRWFjaCgoKSA9PiB7XG4gICAgcmVwb3NpdG9yeU1vY2suZmluZC5tb2NrUmVzdG9yZSgpO1xuICAgIHJlcG9zaXRvcnlNb2NrLmZpbmRPbmUubW9ja1Jlc3RvcmUoKTtcbiAgICByZXBvc2l0b3J5TW9jay5zYXZlLm1vY2tSZXN0b3JlKCk7XG4gICAgcmVwb3NpdG9yeU1vY2sudXBkYXRlLm1vY2tSZXN0b3JlKCk7XG4gIH0pO1xuXG4gIHRlc3QoJ1Nob3VsZCByZXR1cm4gcmVzcG9uc2Ugb2JqZWN0IHdoZW4gY2FsbCB0byBjcmVhdGUgd2l0aCBzdWNjZXNzJywgYXN5bmMgKCkgPT4ge1xuICAgIGNvbnN0IGNyZWF0ZVVzZXJSZXR1cm5Nb2NrOiBDcmVhdGVVc2VyUmVzcG9uc2UgPSB7XG4gICAgICBpZDogZmFrZXIuZGF0YXR5cGUudXVpZCgpLFxuICAgICAgbmFtZTogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgICBwYXNzd29yZDogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgICBlbWFpbDogZmFrZXIuaW50ZXJuZXQuZW1haWwoKSxcbiAgICAgIGlzQWRtaW46IGZhbHNlLFxuICAgICAgYXZhdGFyOiBmYWtlci5kYXRhdHlwZS5zdHJpbmcoKSxcbiAgICAgIGF2YXRhcl91cmw6IGZha2VyLmRhdGF0eXBlLnN0cmluZygpLFxuICAgIH07XG5cbiAgICBjb25zdCBjcmVhdGVVc2VyTW9jazogQ3JlYXRlVXNlclJlcXVlc3QgPSB7XG4gICAgICBuYW1lOiBmYWtlci5kYXRhdHlwZS51dWlkKCksXG4gICAgICBwYXNzd29yZDogZmFrZXIuZGF0YXR5cGUudXVpZCgpLFxuICAgICAgZW1haWw6IGZha2VyLmludGVybmV0LmVtYWlsKCksXG4gICAgICBpc0FkbWluOiBmYWxzZSxcbiAgICAgIGF2YXRhcjogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgfTtcblxuICAgIHJlcG9zaXRvcnlNb2NrLmNyZWF0ZS5tb2NrUmVzb2x2ZWRWYWx1ZShjcmVhdGVVc2VyUmV0dXJuTW9jayk7XG5cbiAgICBjb25zdCBjcmVhdGVVc2VyU2VydmljZSA9IG5ldyBDcmVhdGVVc2VyU2VydmljZSgpO1xuICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgY3JlYXRlVXNlclNlcnZpY2UuZXhlY3V0ZShjcmVhdGVVc2VyTW9jayk7XG5cbiAgICBleHBlY3QocmVzcG9uc2UpLnRvQmUoY3JlYXRlVXNlclJldHVybk1vY2spO1xuICAgIGV4cGVjdChyZXNwb25zZSkudG9CZVRydXRoeSgpO1xuICB9KTtcbn0pO1xuIl0sInZlcnNpb24iOjN9
