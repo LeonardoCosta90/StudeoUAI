@@ -1,12 +1,12 @@
 import { repositoryMock } from '@modules/test/mock/typeorm.mock';
-import CreateUserRequest from '../models/CreateUserRequest';
-import CreateUserResponse from '../models/CreateUserResponse';
-import UserService from './UserService';
+import { CreateUserRequest } from '../models/create-user-request';
+import { UserResponse } from '../models/user-response';
+import { UserService } from './user-service';
 
 import faker from 'faker';
-import { AppError } from '@shared/errors/appError';
+import { AppError } from '@shared/errors/app-error';
 
-describe('Test Pending Transaction Service', () => {
+describe('Test User Service', () => {
   beforeEach(() => {
     repositoryMock.find.mockRestore();
     repositoryMock.findOne.mockRestore();
@@ -15,7 +15,7 @@ describe('Test Pending Transaction Service', () => {
   });
 
   test('Should return response with a new user when call to create with success', async () => {
-    const createUserReturnMock: CreateUserResponse = {
+    const createUserReturnMock: UserResponse = {
       id: faker.datatype.uuid(),
       name: faker.datatype.string(),
       password: faker.datatype.string(),
@@ -29,8 +29,6 @@ describe('Test Pending Transaction Service', () => {
       name: faker.datatype.uuid(),
       password: faker.datatype.uuid(),
       email: faker.internet.email(),
-      isAdmin: false,
-      avatar: faker.datatype.string(),
     };
 
     repositoryMock.create.mockResolvedValue(createUserReturnMock);
@@ -43,7 +41,7 @@ describe('Test Pending Transaction Service', () => {
   });
 
   test('Should error when try create a exists user', async () => {
-    const createUserReturnMock: CreateUserResponse = {
+    const createUserReturnMock: UserResponse = {
       id: faker.datatype.uuid(),
       name: faker.datatype.string(),
       password: faker.datatype.string(),
@@ -57,8 +55,6 @@ describe('Test Pending Transaction Service', () => {
       name: faker.datatype.uuid(),
       password: faker.datatype.uuid(),
       email: faker.internet.email(),
-      isAdmin: false,
-      avatar: faker.datatype.string(),
     };
 
     repositoryMock.create.mockResolvedValue(createUserReturnMock);
@@ -68,14 +64,13 @@ describe('Test Pending Transaction Service', () => {
     try {
       userService.createUser(createUserMock);
     } catch (err) {
-      console.log(err);
       expect(err).toBeInstanceOf(AppError);
       expect(err.message).toEqual('User already exists');
     }
   });
 
   test('Should return a user when find user by id', async () => {
-    const createUserReturnMock: CreateUserResponse = {
+    const createUserReturnMock: UserResponse = {
       id: faker.datatype.uuid(),
       name: faker.datatype.string(),
       password: faker.datatype.string(),

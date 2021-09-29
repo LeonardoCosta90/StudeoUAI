@@ -1,8 +1,8 @@
-import { AppError } from "./appError";
+import { AppError } from './appError';
 
 class EnsureAdminError extends AppError {
   constructor() {
-    super("User does not have admin privileges");
+    super('User does not have admin privileges');
   }
 }
 

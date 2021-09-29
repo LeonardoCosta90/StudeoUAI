@@ -1,7 +1,7 @@
-import { classToClass } from "class-transformer";
+import { classToClass } from 'class-transformer';
 
-import { IUserResponseDTO } from "../dtos/IUserResponseDTO";
-import { User } from "../infra/typeorm/entities/User";
+import { IUserResponseDTO } from '../dtos/IUserResponseDTO';
+import { User } from '../infra/typeorm/entities/User';
 
 class UserMap {
   static toDTO({
