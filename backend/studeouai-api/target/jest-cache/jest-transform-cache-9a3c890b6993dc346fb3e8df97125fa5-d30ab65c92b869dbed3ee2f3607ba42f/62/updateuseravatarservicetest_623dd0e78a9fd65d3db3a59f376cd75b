@@ -1,0 +1,112 @@
+52588c5c7603d3870de2ac12eee0f4ea
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var app_error_1 = require("@shared/errors/app-error");
+var typeorm_mock_1 = require("@modules/test/mock/typeorm.mock");
+var update_user_avatar_service_1 = require("./update-user-avatar-service");
+var faker_1 = __importDefault(require("faker"));
+describe('Test update user avatar', function () {
+    beforeEach(function () {
+        typeorm_mock_1.repositoryMock.create.mockRestore();
+        typeorm_mock_1.repositoryMock.findOne.mockRestore();
+    });
+    test('Should not a error when call to updateAvatarUser()', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var createUserReturnMock, createUserMock, updateMock, updateAvatarUser, response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    createUserReturnMock = {
+                        id: faker_1.default.datatype.uuid(),
+                        name: faker_1.default.datatype.string(),
+                        password: faker_1.default.datatype.string(),
+                        email: faker_1.default.internet.email(),
+                        isAdmin: false,
+                        avatar: faker_1.default.datatype.string(),
+                        avatar_url: faker_1.default.datatype.string(),
+                    };
+                    createUserMock = {
+                        name: faker_1.default.datatype.uuid(),
+                        password: faker_1.default.datatype.uuid(),
+                        email: faker_1.default.internet.email(),
+                    };
+                    updateMock = {
+                        user_id: faker_1.default.datatype.uuid(),
+                        avatar_file: faker_1.default.datatype.string(),
+                    };
+                    typeorm_mock_1.repositoryMock.create.mockResolvedValue(createUserReturnMock);
+                    updateAvatarUser = new update_user_avatar_service_1.UpdateUserAvatarService();
+                    return [4 /*yield*/, updateAvatarUser.updateAvatarUser(updateMock)];
+                case 1:
+                    response = _a.sent();
+                    expect(response).toBeTruthy();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    test('Should return error when call to updateAvatarUser()', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var updateUserAvatarService, updateMock, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    updateUserAvatarService = new update_user_avatar_service_1.UpdateUserAvatarService();
+                    updateMock = {
+                        user_id: faker_1.default.datatype.uuid(),
+                        avatar_file: faker_1.default.datatype.string(),
+                    };
+                    typeorm_mock_1.repositoryMock.findOne.mockRejectedValue(new app_error_1.AppError('User not found', 404));
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, updateUserAvatarService.updateAvatarUser(updateMock)];
+                case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    expect(error_1.message).toEqual('User not found');
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvbGVvL0RvY3VtZW50b3MvcHJvamV0b3MvbWluZS9UQ0MvU3R1ZGVvVUFJL2JhY2tlbmQvc3R1ZGVvdWFpLWFwaS9zcmMvbW9kdWxlcy9hY2NvdW50cy9zZXJ2aWNlcy91cGRhdGUtdXNlci1hdmF0YXItc2VydmljZS50ZXN0LnRzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsc0RBQW9EO0FBQ3BELGdFQUFpRTtBQUVqRSwyRUFBdUU7QUFFdkUsZ0RBQTBCO0FBSzFCLFFBQVEsQ0FBQyx5QkFBeUIsRUFBRTtJQUNsQyxVQUFVLENBQUM7UUFDVCw2QkFBYyxDQUFDLE1BQU0sQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUNwQyw2QkFBYyxDQUFDLE9BQU8sQ0FBQyxXQUFXLEVBQUUsQ0FBQztJQUN2QyxDQUFDLENBQUMsQ0FBQztJQUVILElBQUksQ0FBQyxvREFBb0QsRUFBRTs7Ozs7b0JBQ25ELG9CQUFvQixHQUFpQjt3QkFDekMsRUFBRSxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsSUFBSSxFQUFFO3dCQUN6QixJQUFJLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxNQUFNLEVBQUU7d0JBQzdCLFFBQVEsRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRTt3QkFDakMsS0FBSyxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsS0FBSyxFQUFFO3dCQUM3QixPQUFPLEVBQUUsS0FBSzt3QkFDZCxNQUFNLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxNQUFNLEVBQUU7d0JBQy9CLFVBQVUsRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRTtxQkFDcEMsQ0FBQztvQkFFSSxjQUFjLEdBQXNCO3dCQUN4QyxJQUFJLEVBQUUsZUFBSyxDQUFDLFFBQVEsQ0FBQyxJQUFJLEVBQUU7d0JBQzNCLFFBQVEsRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLElBQUksRUFBRTt3QkFDL0IsS0FBSyxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsS0FBSyxFQUFFO3FCQUM5QixDQUFDO29CQUVJLFVBQVUsR0FBNEI7d0JBQzFDLE9BQU8sRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLElBQUksRUFBRTt3QkFDOUIsV0FBVyxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFO3FCQUNyQyxDQUFDO29CQUVGLDZCQUFjLENBQUMsTUFBTSxDQUFDLGlCQUFpQixDQUFDLG9CQUFvQixDQUFDLENBQUM7b0JBR3hELGdCQUFnQixHQUFHLElBQUksb0RBQXVCLEVBQUUsQ0FBQztvQkFHdEMscUJBQU0sZ0JBQWdCLENBQUMsZ0JBQWdCLENBQUMsVUFBVSxDQUFDLEVBQUE7O29CQUE5RCxRQUFRLEdBQUcsU0FBbUQ7b0JBRXBFLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQyxVQUFVLEVBQUUsQ0FBQzs7OztTQUMvQixDQUFDLENBQUM7SUFFSCxJQUFJLENBQUMscURBQXFELEVBQUU7Ozs7O29CQUNwRCx1QkFBdUIsR0FBRyxJQUFJLG9EQUF1QixFQUFFLENBQUM7b0JBRXhELFVBQVUsR0FBNEI7d0JBQzFDLE9BQU8sRUFBRSxlQUFLLENBQUMsUUFBUSxDQUFDLElBQUksRUFBRTt3QkFDOUIsV0FBVyxFQUFFLGVBQUssQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFO3FCQUNyQyxDQUFDO29CQUVGLDZCQUFjLENBQUMsT0FBTyxDQUFDLGlCQUFpQixDQUN0QyxJQUFJLG9CQUFRLENBQUMsZ0JBQWdCLEVBQUUsR0FBRyxDQUFDLENBQ3BDLENBQUM7Ozs7b0JBR0EscUJBQU0sdUJBQXVCLENBQUMsZ0JBQWdCLENBQUMsVUFBVSxDQUFDLEVBQUE7O29CQUExRCxTQUEwRCxDQUFDOzs7O29CQUUzRCxNQUFNLENBQUMsT0FBSyxDQUFDLE9BQU8sQ0FBQyxDQUFDLE9BQU8sQ0FBQyxnQkFBZ0IsQ0FBQyxDQUFDOzs7OztTQUVuRCxDQUFDLENBQUM7QUFDTCxDQUFDLENBQUMsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvaG9tZS9sZW8vRG9jdW1lbnRvcy9wcm9qZXRvcy9taW5lL1RDQy9TdHVkZW9VQUkvYmFja2VuZC9zdHVkZW91YWktYXBpL3NyYy9tb2R1bGVzL2FjY291bnRzL3NlcnZpY2VzL3VwZGF0ZS11c2VyLWF2YXRhci1zZXJ2aWNlLnRlc3QudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQXBwRXJyb3IgfSBmcm9tICdAc2hhcmVkL2Vycm9ycy9hcHAtZXJyb3InO1xuaW1wb3J0IHsgcmVwb3NpdG9yeU1vY2sgfSBmcm9tICdAbW9kdWxlcy90ZXN0L21vY2svdHlwZW9ybS5tb2NrJztcbmltcG9ydCB7IFVwZGF0ZVVzZXJBdmF0YXJSZXF1ZXN0IH0gZnJvbSAnLi4vbW9kZWxzL3VwZGF0ZS1hdmF0YXItcmVxdWVzdCc7XG5pbXBvcnQgeyBVcGRhdGVVc2VyQXZhdGFyU2VydmljZSB9IGZyb20gJy4vdXBkYXRlLXVzZXItYXZhdGFyLXNlcnZpY2UnO1xuXG5pbXBvcnQgZmFrZXIgZnJvbSAnZmFrZXInO1xuaW1wb3J0IHsgVXNlclJlc3BvbnNlIH0gZnJvbSAnLi4vbW9kZWxzL3VzZXItcmVzcG9uc2UnO1xuaW1wb3J0IHsgQ3JlYXRlVXNlclJlcXVlc3QgfSBmcm9tICcuLi9tb2RlbHMvY3JlYXRlLXVzZXItcmVxdWVzdCc7XG5pbXBvcnQgeyBVc2VyU2VydmljZSB9IGZyb20gJy4vdXNlci1zZXJ2aWNlJztcblxuZGVzY3JpYmUoJ1Rlc3QgdXBkYXRlIHVzZXIgYXZhdGFyJywgKCkgPT4ge1xuICBiZWZvcmVFYWNoKCgpID0+IHtcbiAgICByZXBvc2l0b3J5TW9jay5jcmVhdGUubW9ja1Jlc3RvcmUoKTtcbiAgICByZXBvc2l0b3J5TW9jay5maW5kT25lLm1vY2tSZXN0b3JlKCk7XG4gIH0pO1xuXG4gIHRlc3QoJ1Nob3VsZCBub3QgYSBlcnJvciB3aGVuIGNhbGwgdG8gdXBkYXRlQXZhdGFyVXNlcigpJywgYXN5bmMgKCkgPT4ge1xuICAgIGNvbnN0IGNyZWF0ZVVzZXJSZXR1cm5Nb2NrOiBVc2VyUmVzcG9uc2UgPSB7XG4gICAgICBpZDogZmFrZXIuZGF0YXR5cGUudXVpZCgpLFxuICAgICAgbmFtZTogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgICBwYXNzd29yZDogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgICBlbWFpbDogZmFrZXIuaW50ZXJuZXQuZW1haWwoKSxcbiAgICAgIGlzQWRtaW46IGZhbHNlLFxuICAgICAgYXZhdGFyOiBmYWtlci5kYXRhdHlwZS5zdHJpbmcoKSxcbiAgICAgIGF2YXRhcl91cmw6IGZha2VyLmRhdGF0eXBlLnN0cmluZygpLFxuICAgIH07XG5cbiAgICBjb25zdCBjcmVhdGVVc2VyTW9jazogQ3JlYXRlVXNlclJlcXVlc3QgPSB7XG4gICAgICBuYW1lOiBmYWtlci5kYXRhdHlwZS51dWlkKCksXG4gICAgICBwYXNzd29yZDogZmFrZXIuZGF0YXR5cGUudXVpZCgpLFxuICAgICAgZW1haWw6IGZha2VyLmludGVybmV0LmVtYWlsKCksXG4gICAgfTtcblxuICAgIGNvbnN0IHVwZGF0ZU1vY2s6IFVwZGF0ZVVzZXJBdmF0YXJSZXF1ZXN0ID0ge1xuICAgICAgdXNlcl9pZDogZmFrZXIuZGF0YXR5cGUudXVpZCgpLFxuICAgICAgYXZhdGFyX2ZpbGU6IGZha2VyLmRhdGF0eXBlLnN0cmluZygpLFxuICAgIH07XG5cbiAgICByZXBvc2l0b3J5TW9jay5jcmVhdGUubW9ja1Jlc29sdmVkVmFsdWUoY3JlYXRlVXNlclJldHVybk1vY2spO1xuXG4gICAgLy8gY29uc3QgdXNlclNlcnZpY2UgPSBuZXcgVXNlclNlcnZpY2UoKTtcbiAgICBjb25zdCB1cGRhdGVBdmF0YXJVc2VyID0gbmV3IFVwZGF0ZVVzZXJBdmF0YXJTZXJ2aWNlKCk7XG5cbiAgICAvL2F3YWl0IHVzZXJTZXJ2aWNlLmNyZWF0ZVVzZXIoY3JlYXRlVXNlck1vY2spO1xuICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgdXBkYXRlQXZhdGFyVXNlci51cGRhdGVBdmF0YXJVc2VyKHVwZGF0ZU1vY2spO1xuXG4gICAgZXhwZWN0KHJlc3BvbnNlKS50b0JlVHJ1dGh5KCk7XG4gIH0pO1xuXG4gIHRlc3QoJ1Nob3VsZCByZXR1cm4gZXJyb3Igd2hlbiBjYWxsIHRvIHVwZGF0ZUF2YXRhclVzZXIoKScsIGFzeW5jICgpID0+IHtcbiAgICBjb25zdCB1cGRhdGVVc2VyQXZhdGFyU2VydmljZSA9IG5ldyBVcGRhdGVVc2VyQXZhdGFyU2VydmljZSgpO1xuXG4gICAgY29uc3QgdXBkYXRlTW9jazogVXBkYXRlVXNlckF2YXRhclJlcXVlc3QgPSB7XG4gICAgICB1c2VyX2lkOiBmYWtlci5kYXRhdHlwZS51dWlkKCksXG4gICAgICBhdmF0YXJfZmlsZTogZmFrZXIuZGF0YXR5cGUuc3RyaW5nKCksXG4gICAgfTtcblxuICAgIHJlcG9zaXRvcnlNb2NrLmZpbmRPbmUubW9ja1JlamVjdGVkVmFsdWUoXG4gICAgICBuZXcgQXBwRXJyb3IoJ1VzZXIgbm90IGZvdW5kJywgNDA0KSxcbiAgICApO1xuXG4gICAgdHJ5IHtcbiAgICAgIGF3YWl0IHVwZGF0ZVVzZXJBdmF0YXJTZXJ2aWNlLnVwZGF0ZUF2YXRhclVzZXIodXBkYXRlTW9jayk7XG4gICAgfSBjYXRjaCAoZXJyb3IpIHtcbiAgICAgIGV4cGVjdChlcnJvci5tZXNzYWdlKS50b0VxdWFsKCdVc2VyIG5vdCBmb3VuZCcpO1xuICAgIH1cbiAgfSk7XG59KTtcbiJdLCJ2ZXJzaW9uIjozfQ==
