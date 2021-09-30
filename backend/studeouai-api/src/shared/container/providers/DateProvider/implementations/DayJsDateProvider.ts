@@ -1,7 +1,7 @@
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 
-import { IDateProvider } from "../IDateProvider";
+import { IDateProvider } from '../IDateProvider';
 
 dayjs.extend(utc);
 
@@ -13,7 +13,7 @@ class DayjsDateProvider implements IDateProvider {
   compareInDays(start_date: Date, end_date: Date): number {
     return dayjs(this.convertToUTC(end_date)).diff(
       this.convertToUTC(start_date),
-      "days"
+      'days',
     );
   }
 
@@ -23,12 +23,12 @@ class DayjsDateProvider implements IDateProvider {
 
   addDays(days: number, reference_date: Date = null): Date {
     const date = reference_date ? dayjs(reference_date) : dayjs();
-    return date.add(days, "day").toDate();
+    return date.add(days, 'day').toDate();
   }
 
   addHours(hours: number, reference_date: Date): Date {
     const date = reference_date ? dayjs(reference_date) : dayjs();
-    return date.add(hours, "hour").toDate();
+    return date.add(hours, 'hour').toDate();
   }
 
   convertToUTC(date: Date): string {
@@ -38,7 +38,7 @@ class DayjsDateProvider implements IDateProvider {
   compareInHours(start_date: Date, end_date: Date): number {
     return dayjs(this.convertToUTC(end_date)).diff(
       this.convertToUTC(start_date),
-      "hours"
+      'hours',
     );
   }
 }

@@ -183,6 +183,9 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# jest html files
+target\
+
 # Windows shortcuts
 *.lnk
 

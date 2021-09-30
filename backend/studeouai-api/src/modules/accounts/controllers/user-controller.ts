@@ -24,7 +24,7 @@ async function createUser(
   next: NextFunction,
 ): Promise<Response> {
   try {
-    const { name, password, email, isAdmin, avatar } = request.body;
+    const { name, password, email } = request.body;
 
     const createUser = new UserService();
 

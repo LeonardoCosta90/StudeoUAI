@@ -1,4 +1,4 @@
-import { IMailProviderSendMailDTO } from "./IMailProviderSendMailDTO";
+import { IMailProviderSendMailDTO } from './IMailProviderSendMailDTO';
 
 interface IMailProvider {
   sendMail({

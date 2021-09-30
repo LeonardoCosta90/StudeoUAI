@@ -1,9 +1,9 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository } from 'typeorm';
 
-import { ICreateUserTokenDTO } from "@modules/accounts/dtos/ICreateUserTokenDTO";
-import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
+import { ICreateUserTokenDTO } from '@modules/accounts/dtos/ICreateUserTokenDTO';
+import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
 
-import { UsersTokens } from "../typeorm/entities/UserTokens";
+import { UsersTokens } from '../typeorm/entities/UserTokens';
 
 class UsersTokensRepository implements IUsersTokensRepository {
   private repository: Repository<UsersTokens>;
@@ -25,7 +25,7 @@ class UsersTokensRepository implements IUsersTokensRepository {
 
   async findByUserIdAndRefreshToken(
     user_id: string,
-    refresh_token: string
+    refresh_token: string,
   ): Promise<UsersTokens> {
     const userTokens = await this.repository.findOne({
       user_id,

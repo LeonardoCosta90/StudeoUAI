@@ -1,0 +1,281 @@
+75d21e96d290f91d60c272b41be569fd
+"use strict";
+
+/* istanbul ignore next */
+function cov_2nuafr2kqj() {
+  var path = "/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/errors/app-error.ts";
+  var hash = "c4a0c513fb4aa598f3ae5e61ec76c9da629b160a";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/errors/app-error.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 26
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 30
+        },
+        end: {
+          line: 11,
+          column: 3
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 8
+        },
+        end: {
+          line: 6,
+          column: 56
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 37
+        },
+        end: {
+          line: 6,
+          column: 54
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 8
+        },
+        end: {
+          line: 7,
+          column: 31
+        }
+      },
+      "6": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 37
+        }
+      },
+      "7": {
+        start: {
+          line: 10,
+          column: 4
+        },
+        end: {
+          line: 10,
+          column: 20
+        }
+      },
+      "8": {
+        start: {
+          line: 12,
+          column: 0
+        },
+        end: {
+          line: 12,
+          column: 28
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 4,
+            column: 30
+          },
+          end: {
+            line: 4,
+            column: 31
+          }
+        },
+        loc: {
+          start: {
+            line: 4,
+            column: 42
+          },
+          end: {
+            line: 11,
+            column: 1
+          }
+        },
+        line: 4
+      },
+      "1": {
+        name: "AppError",
+        decl: {
+          start: {
+            line: 5,
+            column: 13
+          },
+          end: {
+            line: 5,
+            column: 21
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 43
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 5
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 6,
+            column: 8
+          },
+          end: {
+            line: 6,
+            column: 56
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 6,
+            column: 8
+          },
+          end: {
+            line: 6,
+            column: 56
+          }
+        }, {
+          start: {
+            line: 6,
+            column: 8
+          },
+          end: {
+            line: 6,
+            column: 56
+          }
+        }],
+        line: 6
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/errors/app-error.ts",
+      mappings: ";;;AAAA;IAIE,kBAAY,OAAe,EAAE,UAAgB;QAAhB,2BAAA,EAAA,gBAAgB;QAC3C,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;QACvB,IAAI,CAAC,UAAU,GAAG,UAAU,CAAC;IAC/B,CAAC;IACH,eAAC;AAAD,CAAC,AARD,IAQC;AARY,4BAAQ",
+      names: [],
+      sources: ["/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/errors/app-error.ts"],
+      sourcesContent: ["export class AppError {\n  public readonly message: string;\n  public readonly statusCode: number;\n\n  constructor(message: string, statusCode = 400) {\n    this.message = message;\n    this.statusCode = statusCode;\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "c4a0c513fb4aa598f3ae5e61ec76c9da629b160a"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2nuafr2kqj = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_2nuafr2kqj();
+cov_2nuafr2kqj().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_2nuafr2kqj().s[1]++;
+exports.AppError = void 0;
+var AppError =
+/* istanbul ignore next */
+(cov_2nuafr2kqj().s[2]++, function () {
+  /* istanbul ignore next */
+  cov_2nuafr2kqj().f[0]++;
+
+  function AppError(message, statusCode) {
+    /* istanbul ignore next */
+    cov_2nuafr2kqj().f[1]++;
+    cov_2nuafr2kqj().s[3]++;
+
+    if (statusCode === void 0) {
+      /* istanbul ignore next */
+      cov_2nuafr2kqj().b[0][0]++;
+      cov_2nuafr2kqj().s[4]++;
+      statusCode = 400;
+    } else
+    /* istanbul ignore next */
+    {
+      cov_2nuafr2kqj().b[0][1]++;
+    }
+
+    cov_2nuafr2kqj().s[5]++;
+    this.message = message;
+
+    /* istanbul ignore next */
+    cov_2nuafr2kqj().s[6]++;
+    this.statusCode = statusCode;
+  }
+
+  /* istanbul ignore next */
+  cov_2nuafr2kqj().s[7]++;
+  return AppError;
+}());
+
+/* istanbul ignore next */
+cov_2nuafr2kqj().s[8]++;
+exports.AppError = AppError;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2xlby9Eb2N1bWVudG9zL3Byb2pldG9zL21pbmUvVENDL1N0dWRlb1VBSS9iYWNrZW5kL3N0dWRlb3VhaS1hcGkvc3JjL3NoYXJlZC9lcnJvcnMvYXBwLWVycm9yLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxJQUFBLFFBQUE7QUFBQTtBQUFBLDBCQUFBLFlBQUE7QUFBQTtBQUFBOztBQUlFLFdBQUEsUUFBQSxDQUFZLE9BQVosRUFBNkIsVUFBN0IsRUFBNkM7QUFBQTtBQUFBO0FBQUE7O0FBQWhCLFFBQUEsVUFBQSxLQUFBLEtBQUEsQ0FBQSxFQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFBQSxVQUFBLEdBQUEsR0FBQTtBQUFnQixLQUFoQjtBQUFBO0FBQUE7QUFBQTtBQUFBOztBQUFnQjtBQUMzQyxTQUFLLE9BQUwsR0FBZSxPQUFmOztBQUQyQztBQUFBO0FBRTNDLFNBQUssVUFBTCxHQUFrQixVQUFsQjtBQUNEOztBQVBIO0FBQUE7QUFRQSxTQUFBLFFBQUE7QUFBQyxDQVJELEVBQUEsQ0FBQTs7OztBQUFhLE9BQUEsQ0FBQSxRQUFBLEdBQUEsUUFBQSIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjbGFzcyBBcHBFcnJvciB7XG4gIHB1YmxpYyByZWFkb25seSBtZXNzYWdlOiBzdHJpbmc7XG4gIHB1YmxpYyByZWFkb25seSBzdGF0dXNDb2RlOiBudW1iZXI7XG5cbiAgY29uc3RydWN0b3IobWVzc2FnZTogc3RyaW5nLCBzdGF0dXNDb2RlID0gNDAwKSB7XG4gICAgdGhpcy5tZXNzYWdlID0gbWVzc2FnZTtcbiAgICB0aGlzLnN0YXR1c0NvZGUgPSBzdGF0dXNDb2RlO1xuICB9XG59XG4iXX0=

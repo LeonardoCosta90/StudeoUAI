@@ -1,7 +1,7 @@
 import { AppError } from '@shared/errors/app-error';
 import { getCustomRepository } from 'typeorm';
 import { ProfileResponse } from '../models/profile-response';
-import { UsersRepository } from '../typeorm/repositories/UsersRepository';
+import { UsersRepository } from '../typeorm/repositories/users-repository';
 
 export class ProfileService {
   async findProfileById(id: string): Promise<ProfileResponse> {
