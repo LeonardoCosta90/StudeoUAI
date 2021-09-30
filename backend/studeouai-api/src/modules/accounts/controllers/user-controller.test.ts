@@ -1,11 +1,9 @@
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
-import { AppError } from '@shared/errors/appError';
 import 'reflect-metadata';
-import UserController from './UserController';
+import UserController from './user-controller';
 import { getMockReq, getMockRes } from '@jest-mock/express';
 import faker from 'faker';
 import UserService from '../services/UserService';
-import CreateUserRequest from '../models/CreateUserRequest';
 
 jest.mock('../services/UserService');
 
@@ -38,8 +36,6 @@ describe('Test user controller', () => {
     );
 
     await UserController.findUserById(mockRequest, res, next);
-
-    console.log(res);
 
     expect(res.status).toBeCalledWith(200);
   });

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import UserService from '../services/UserService';
+import { UserService } from '../services/user-service';
 
 async function findUserById(
   request: Request,
@@ -32,8 +32,6 @@ async function createUser(
       name,
       password,
       email,
-      isAdmin,
-      avatar,
     });
 
     return response.json(user);

@@ -1,17 +1,15 @@
-import { AppError } from '@shared/errors/appError';
+import { AppError } from '@shared/errors/app-error';
 import { hash } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
-import CreateUserRequest from '../models/CreateUserRequest';
+import { CreateUserRequest } from '../models/create-user-request';
 import { User } from '../typeorm/entities/User';
 import { UsersRepository } from '../typeorm/repositories/UsersRepository';
 
-export default class UserService {
+export class UserService {
   async createUser({
     name,
     password,
     email,
-    isAdmin,
-    avatar,
   }: CreateUserRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
     const emailExists = await usersRepository.findByEmail(email);
