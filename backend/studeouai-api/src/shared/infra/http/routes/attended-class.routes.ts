@@ -1,17 +1,17 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-import { CreateAttendedClassController } from "@modules/attended-class/useCases/createAttendedClass/CreateAttendedClassController";
+import { CreateAttendedClassController } from '@modules/attended-class/useCases/createAttendedClass/CreateAttendedClassController';
 
-import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
 const attendedClassRoutes = Router();
 
 const createClassController = new CreateAttendedClassController();
 
 attendedClassRoutes.post(
-  "/",
+  '/',
   ensureAuthenticated,
-  createClassController.handle
+  createClassController.handle,
 );
 
 export { attendedClassRoutes };

@@ -2,6 +2,8 @@ import { Router } from 'express';
 
 import { ResetUsersPasswordController } from '@modules/accounts/controllers/reset-users-password-controller';
 import { SendForgotPasswordMailController } from '@modules/accounts/controllers/send-forgot-password-mail-controller';
+import { validateBody, validateQuery } from '../middlewares/validations';
+import validation from '../validations/validation';
 
 const passwordRoutes = Router();
 
@@ -10,8 +12,14 @@ const resetUsersPasswordController = new ResetUsersPasswordController();
 
 passwordRoutes.post(
   '/forgot',
+  validateBody(validation.getEmailValidation),
   sendForgotPasswordMailController.sendForgotPasswordMail,
 );
-passwordRoutes.post('/reset', resetUsersPasswordController.resetUsersPassword);
+passwordRoutes.post(
+  '/reset',
+  validateQuery(validation.resetTokenValidation),
+  validateBody(validation.resetPassValidation),
+  resetUsersPasswordController.resetUsersPassword,
+);
 
 export { passwordRoutes };
