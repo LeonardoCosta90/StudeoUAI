@@ -1,26 +1,35 @@
-import { Router } from 'express';
 import multer from 'multer';
+import { Router } from 'express';
 
 import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
-import createUserValidation from '../validations/create-user-validation';
-import getUserValidation from '../validations/get-user-validation';
+import { validateBody } from '../../http/middlewares/validations';
+
 import profileController from '@modules/accounts/controllers/profile-controller';
+import userController from '@modules/accounts/controllers/user-controller';
 import updateAvatarController from '@modules/accounts/controllers/update-user-avatar-controller';
 import uploadConfig from '@config/upload';
-import userController from '@modules/accounts/controllers/user-controller';
+import validation from '../validations/validation';
 
 const usersRoutes = Router();
 
 const uploadAvatar = multer(uploadConfig);
 
-usersRoutes.get('/', getUserValidation, userController.findUserById);
+usersRoutes.get(
+  '/',
+  validateBody(validation.getUserValidation),
+  userController.findUserById,
+);
 
-usersRoutes.post('/', createUserValidation, userController.createUser);
+usersRoutes.post(
+  '/',
+  validateBody(validation.createUserValidation),
+  userController.createUser,
+);
 
 usersRoutes.get(
   '/profile',
   ensureAuthenticated,
-  getUserValidation,
+  validateBody(validation.createUserValidation),
   profileController.profileById,
 );
 

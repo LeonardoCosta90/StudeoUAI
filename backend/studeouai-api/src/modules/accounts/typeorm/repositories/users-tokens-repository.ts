@@ -4,7 +4,7 @@ import { UsersTokens } from '../entities/UserTokens';
 import { TokenRequest } from '@modules/accounts/models/token-request';
 
 @EntityRepository(UsersTokens)
-class UsersTokensRepository extends Repository<UsersTokens> {
+export class UsersTokensRepository extends Repository<UsersTokens> {
   async findByRefreshToken(token: string): Promise<UsersTokens> {
     const userToken = await this.findOne({
       refresh_token: token,
@@ -26,19 +26,20 @@ class UsersTokensRepository extends Repository<UsersTokens> {
     });
     return userTokens;
   }
-  async create({
+
+  async generate({
     user_id,
     refresh_token,
     expires_date,
   }: TokenRequest): Promise<UsersTokens> {
-    const userToken = await this.create({
+    const userToken = this.create({
       user_id,
       refresh_token,
       expires_date,
     });
+
     await this.save(userToken);
+
     return userToken;
   }
 }
-
-export { UsersTokensRepository };

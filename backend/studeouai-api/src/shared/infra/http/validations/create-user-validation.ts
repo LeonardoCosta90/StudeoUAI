@@ -1,11 +1,9 @@
-import { celebrate, Joi, Segments } from 'celebrate';
+import Joi from '@hapi/joi';
 
-const createUserValidation = celebrate({
-  [Segments.BODY]: {
-    name: Joi.string().required(),
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  },
-});
+const createUserValidation = {
+  name: Joi.string().required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+};
 
-export default createUserValidation;
+export default Joi.object(createUserValidation);
