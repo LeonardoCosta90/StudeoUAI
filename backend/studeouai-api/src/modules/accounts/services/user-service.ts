@@ -2,7 +2,7 @@ import { AppError } from '@shared/errors/app-error';
 import { hash } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
 import { CreateUserRequest } from '../models/create-user-request';
-import { User } from '../typeorm/entities/User';
+import { User } from '../typeorm/entities/user';
 import { UsersRepository } from '../typeorm/repositories/users-repository';
 
 export class UserService {
