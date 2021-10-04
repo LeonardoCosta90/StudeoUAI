@@ -1,9 +1,9 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository } from 'typeorm';
 
-import { ICreateClassDTO } from "@modules/class/dtos/ICreateClassDTO";
-import { IClassRepository } from "@modules/class/repositories/IClassRepository";
+import { ICreateClassDTO } from '@modules/class/dtos/ICreateClassDTO';
+import { IClassRepository } from '@modules/class/repositories/IClassRepository';
 
-import { Class } from "../entities/Class";
+import { Class } from '../entities/Class';
 
 class ClassRepository implements IClassRepository {
   private repository: Repository<Class>;

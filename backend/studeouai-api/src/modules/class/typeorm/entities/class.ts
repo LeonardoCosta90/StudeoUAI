@@ -10,8 +10,8 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Category } from './Category';
-import { Specification } from './Specifications';
+import { Category } from './category';
+import { Specification } from './specifications';
 
 @Entity('class')
 class Class {

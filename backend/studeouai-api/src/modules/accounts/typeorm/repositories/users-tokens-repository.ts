@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 
-import { UsersTokens } from '../entities/UserTokens';
+import { UsersTokens } from '../entities/user-tokens';
 import { TokenRequest } from '@modules/accounts/models/token-request';
 
 @EntityRepository(UsersTokens)
