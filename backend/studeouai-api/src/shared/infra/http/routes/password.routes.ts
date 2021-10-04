@@ -1,14 +1,17 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-import { ResetUsersPasswordController } from "@modules/accounts/useCases/resetUsersPassword/ResetUsersPasswordController";
-import { SendForgotPasswordMailController } from "@modules/accounts/useCases/sendForgotPasswordMail/SendForgotPasswordMailController";
+import { ResetUsersPasswordController } from '@modules/accounts/controllers/reset-users-password-controller';
+import { SendForgotPasswordMailController } from '@modules/accounts/controllers/send-forgot-password-mail-controller';
 
 const passwordRoutes = Router();
 
 const sendForgotPasswordMailController = new SendForgotPasswordMailController();
-const resetUsersPasswordContoller = new ResetUsersPasswordController();
+const resetUsersPasswordController = new ResetUsersPasswordController();
 
-passwordRoutes.post("/forgot", sendForgotPasswordMailController.handle);
-passwordRoutes.post("/reset", resetUsersPasswordContoller.handle);
+passwordRoutes.post(
+  '/forgot',
+  sendForgotPasswordMailController.sendForgotPasswordMail,
+);
+passwordRoutes.post('/reset', resetUsersPasswordController.resetUsersPassword);
 
 export { passwordRoutes };

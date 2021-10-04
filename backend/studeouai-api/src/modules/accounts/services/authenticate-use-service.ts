@@ -11,7 +11,7 @@ import { UsersTokensRepository } from '../typeorm/repositories/users-tokens-repo
 import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
 
-export class AuthenticateUserUseCase {
+export class AuthenticateUserService {
   async auth({ email, password }: LoginRequest): Promise<LoginResponse> {
     const usersRepository = getCustomRepository(UsersRepository);
     const daysProvider = new DayjsDateProvider();
@@ -52,7 +52,7 @@ export class AuthenticateUserUseCase {
       null,
     );
 
-    await userTokenRepository.create({
+    await userTokenRepository.generate({
       user_id: user.id,
       refresh_token,
       expires_date: refresh_token_expires_date,

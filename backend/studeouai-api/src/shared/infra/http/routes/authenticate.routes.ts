@@ -1,15 +1,15 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-import { AuthenticateUserController } from "@modules/accounts/useCases/authenticateUser/authenticateUserController";
-import { RefreshTokenController } from "@modules/accounts/useCases/refreshToken/RefreshTokenController";
+import { AuthenticateUserController } from '@modules/accounts/controllers/authenticate-user-controller';
+import { RefreshTokenController } from '@modules/accounts/controllers/refresh-token-controller';
 
 const authenticateRoutes = Router();
 
 const authenticateUserController = new AuthenticateUserController();
 const refreshTokenController = new RefreshTokenController();
 
-authenticateRoutes.post("/sessions", authenticateUserController.handle);
+authenticateRoutes.post('/sessions', authenticateUserController.handle);
 
-authenticateRoutes.post("/refresh-token", refreshTokenController.handle);
+authenticateRoutes.post('/refresh-token', refreshTokenController.handle);
 
 export { authenticateRoutes };

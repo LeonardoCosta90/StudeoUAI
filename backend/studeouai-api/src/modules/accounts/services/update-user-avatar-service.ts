@@ -13,8 +13,6 @@ class UpdateUserAvatarService {
     const userFound = await userRepository.findById(user_id);
     const storageProvider = new StorageProvider();
 
-    console.log('oi', userFound);
-
     if (!userFound) {
       throw new AppError('User not found', 404);
     }

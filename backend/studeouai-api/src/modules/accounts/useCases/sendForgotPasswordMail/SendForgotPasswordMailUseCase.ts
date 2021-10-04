@@ -1,28 +1,28 @@
-import { resolve } from "path";
-import { inject, injectable } from "tsyringe";
-import { v4 as uuidV4 } from "uuid";
+import { resolve } from 'path';
+import { inject, injectable } from 'tsyringe';
+import { v4 as uuidV4 } from 'uuid';
 
-import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
-import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
-import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
-import { IMailProvider } from "@shared/container/providers/MailProvider/IMailProvider";
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
+import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
+import { IMailProvider } from '@shared/container/providers/MailProvider/IMailProvider';
 
-import { SendForgotPasswordMailError } from "./SendForgotPasswordMailError";
+import { SendForgotPasswordMailError } from './SendForgotPasswordMailError';
 
 @injectable()
 class SendForgotPasswordMailUseCase {
   constructor(
-    @inject("UsersRepository")
+    @inject('UsersRepository')
     private usersRepository: IUsersRepository,
 
-    @inject("UsersTokensRepository")
+    @inject('UsersTokensRepository')
     private UsersTokensRepository: IUsersTokensRepository,
 
-    @inject("DayjsDateProvider")
+    @inject('DayjsDateProvider')
     private dateProvider: IDateProvider,
 
-    @inject("MailProvider")
-    private mailProvider: IMailProvider
+    @inject('MailProvider')
+    private mailProvider: IMailProvider,
   ) {}
 
   async execute(email: string): Promise<void> {
@@ -41,11 +41,11 @@ class SendForgotPasswordMailUseCase {
 
     const templatePath = resolve(
       __dirname,
-      "..",
-      "..",
-      "views",
-      "emails",
-      "ForgotPassword.hbs"
+      '..',
+      '..',
+      'views',
+      'emails',
+      'ForgotPassword.hbs',
     );
 
     const templateVariables = {
@@ -56,7 +56,7 @@ class SendForgotPasswordMailUseCase {
 
     await this.mailProvider.sendMail({
       to: user.email,
-      subject: "Recuperação de senha",
+      subject: 'Recuperação de senha',
       path: templatePath,
       variables: templateVariables,
     });
