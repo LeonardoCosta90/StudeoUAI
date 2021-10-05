@@ -3,8 +3,9 @@ import { getCustomRepository } from 'typeorm';
 
 import { CategoriesRepository } from '../typeorm/repositories/categories-repository';
 import { CreateCategoryRequest } from '../models/create-category-request';
+import { Category } from '../typeorm/entities/category';
 
-export class CreateCategoryService {
+export class CategoryService {
   async createCategory({
     name,
     description,
@@ -17,5 +18,11 @@ export class CreateCategoryService {
     }
 
     await categoriesRepo.createCategory({ name, description });
+  }
+
+  async listCategory(): Promise<Category[]> {
+    const categoriesRepo = getCustomRepository(CategoriesRepository);
+    const categories = await categoriesRepo.listCategory();
+    return categories;
   }
 }

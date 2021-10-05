@@ -1,5 +1,5 @@
-import { ICreateClassDTO } from "../dtos/ICreateClassDTO";
-import { Class } from "../infra/typeorm/entities/Class";
+import { ICreateClassDTO } from '../dtos/ICreateClassDTO';
+import { Class } from '../infra/typeorm/entities/Class';
 
 interface IClassRepository {
   create(data: ICreateClassDTO): Promise<Class>;
