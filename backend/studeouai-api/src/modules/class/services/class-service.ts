@@ -7,7 +7,7 @@ import { ClassImageRequest } from '../models/class-image-request';
 import { ClassImagesRepository } from '../typeorm/repositories/class-images-repository';
 import { ClassRepository } from '../typeorm/repositories/class-repository';
 import { CreateClassRequest } from '../models/create-class-request';
-import { S3StorageProvider } from '@shared/container/providers/StorageProvider/implementations/S3StorageProvider';
+import { S3StorageProvider } from '@shared/providers/storage-provider/s3-storage-provider';
 
 export class ClassService {
   async createClass({

@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title":"studeouai-api Documentation",
-    "description": "This is an API studeouai", 
+    "title": "studeouai-api Documentation",
+    "description": "This is an API studeouai",
     "version": "1.0.0",
     "contact": {
       "email": "leonardoeverton.tec@gmail.com"
@@ -11,27 +11,31 @@
   "paths": {
     "/categories": {
       "post": {
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "summary": "Create a category",
         "description": "Create a new category",
         "security": [
-          { "bearerAuth": [] }
+          {
+            "bearerAuth": []
+          }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "object", 
+                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   },
-                  "description":{
+                  "description": {
                     "type": "string"
                   }
                 },
-                "example":{
-                  "name": "category name sample", 
+                "example": {
+                  "name": "category name sample",
                   "description": "Category description sample"
                 }
               }
@@ -48,7 +52,9 @@
         }
       },
       "get": {
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "summary": "List all categories",
         "description": "List all categories",
         "responses": {
@@ -59,7 +65,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type":"object",
+                    "type": "object",
                     "properties": {
                       "name": {
                         "type": "string"
@@ -76,18 +82,21 @@
         }
       }
     },
-
     "/specifications": {
       "post": {
-        "tags": ["Specifications"],
+        "tags": [
+          "Specifications"
+        ],
         "summary": "Create a specification",
         "description": "Create a new specification",
         "security": [
-          { "bearerAuth": [] }
+          {
+            "bearerAuth": []
+          }
         ],
         "requestBody": {
           "content": {
-            "application/json":{
+            "application/json": {
               "schema": {
                 "$ref": "#/definitions/specification"
               }
@@ -106,19 +115,21 @@
     },
     "/sessions": {
       "post": {
-        "tags": ["Session"],
+        "tags": [
+          "Session"
+        ],
         "summary": "Authentication User",
         "description": "Authentication User",
         "requestBody": {
           "content": {
             "application/json": {
-              "schema":{
+              "schema": {
                 "type": "object",
                 "properties": {
-                  "email":{
+                  "email": {
                     "type": "string"
                   },
-                  "password":{
+                  "password": {
                     "type": "string"
                   }
                 }
@@ -134,16 +145,19 @@
             "description": "Email or password incorrect"
           }
         }
-
       }
     },
-    "/class":{
+    "/class": {
       "post": {
-        "tags": ["Class"],
+        "tags": [
+          "Class"
+        ],
         "summary": "Create a new class",
         "description": "Create a new class",
         "security": [
-          { "bearerAuth": [] }
+          {
+            "bearerAuth": []
+          }
         ],
         "requestBody": {
           "content": {
@@ -155,29 +169,35 @@
           }
         },
         "responses": {
-          "201":{
+          "201": {
             "description": "Created"
           },
-          "400":{"description": "Class already exists"}
+          "400": {
+            "description": "Class already exists"
+          }
         }
       }
     },
-    "/class/images/{id}":{
-      "post":{
-        "tags":["Class"],
+    "/class/images/{id}": {
+      "post": {
+        "tags": [
+          "Class"
+        ],
         "summary": "Upload images for a class",
         "description": "Upload one or mor images for a class",
-        "security":[
-          { "bearerAuth": []}
-        ],
-        "parameters":[
+        "security": [
           {
-            "name":"id",
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "description": "Id of a valid class",
             "required": true,
             "schema": {
-              "type":"string"
+              "type": "string"
             }
           }
         ],
@@ -186,7 +206,7 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "properties":{
+                "properties": {
                   "images": {
                     "type": "array",
                     "items": {
@@ -217,13 +237,13 @@
         "name": {
           "type": "string"
         },
-        "description":{
+        "description": {
           "type": "string"
         }
       }
     },
     "class": {
-      "type":"object",
+      "type": "object",
       "properties": {
         "name": {
           "type": "string"

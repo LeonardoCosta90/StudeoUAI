@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
-import { container } from "tsyringe";
+import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
-import { UploadClassImagesUseCase } from "./UploadClassImageUseCase";
+import { UploadClassImagesUseCase } from './UploadClassImageUseCase';
 
 interface IFiles {
   filename: string;
@@ -12,10 +12,10 @@ class UploadClassImagesController {
     const { id } = request.params;
     const images = request.files as IFiles[];
 
-    const fileNames = images.map((file) => file.filename);
+    const fileNames = images.map(file => file.filename);
 
     const uploadClassImagesUseCase = container.resolve(
-      UploadClassImagesUseCase
+      UploadClassImagesUseCase,
     );
     await uploadClassImagesUseCase.execute({
       class_id: id,

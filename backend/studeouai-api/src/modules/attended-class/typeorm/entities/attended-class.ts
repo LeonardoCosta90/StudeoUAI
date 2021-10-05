@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Class } from '@modules/class/infra/typeorm/entities/Class';
+import { Class } from '@modules/class/typeorm/entities/class';
 
 @Entity('attended_class')
 class AttendedClass extends Class {
