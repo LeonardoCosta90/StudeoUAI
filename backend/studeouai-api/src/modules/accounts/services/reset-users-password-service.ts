@@ -2,7 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 
 import { AppError } from '@shared/errors/app-error';
-import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayJsDateProvider';
+import { DayjsDateProvider } from '@shared/providers/date-provider/dayjs-date-provider';
 
 import { ResetUserPasswordRequest } from '../models/reset-user-password-request';
 import { UsersRepository } from '../typeorm/repositories/users-repository';

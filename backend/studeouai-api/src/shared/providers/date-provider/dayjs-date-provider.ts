@@ -1,11 +1,11 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 
-import { IDateProvider } from '../IDateProvider';
+import { IDateProvider } from '../interfaces/date-provider';
 
 dayjs.extend(utc);
 
-class DayjsDateProvider implements IDateProvider {
+export class DayjsDateProvider implements IDateProvider {
   checkIsBefore(start_date: Date, end_date: Date): boolean {
     return dayjs(start_date).isBefore(end_date);
   }
@@ -42,5 +42,3 @@ class DayjsDateProvider implements IDateProvider {
     );
   }
 }
-
-export { DayjsDateProvider };

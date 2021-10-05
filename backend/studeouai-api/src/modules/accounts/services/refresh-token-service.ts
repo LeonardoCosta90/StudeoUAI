@@ -5,7 +5,7 @@ import auth from '@config/auth';
 import { UsersTokensRepository } from '../typeorm/repositories/users-tokens-repository';
 import { RefreshTokenRequest } from './../models/refresh-token-request';
 import { RefreshTokenResponse } from '../models/refresh-token-response';
-import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayJsDateProvider';
+import { DayjsDateProvider } from '@shared/providers/date-provider/dayjs-date-provider';
 import { AppError } from '@shared/errors/app-error';
 
 export class RefreshTokenService {
