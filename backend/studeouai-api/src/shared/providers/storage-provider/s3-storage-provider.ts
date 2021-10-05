@@ -6,7 +6,7 @@ import path from 'path';
 import upload from '@config/upload';
 import { deleteFile } from '@utils/file';
 
-import { IStorageProvider } from '../IStorageProvider';
+import { IStorageProvider } from '../interfaces/storage-provider';
 
 class S3StorageProvider implements IStorageProvider {
   private client: S3;

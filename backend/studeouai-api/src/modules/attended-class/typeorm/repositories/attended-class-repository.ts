@@ -1,16 +1,11 @@
-import { getRepository, Repository } from 'typeorm';
+import { EntityRepository, getRepository, Repository } from 'typeorm';
 
-import { ICreateAttendedClassDTO } from '@modules/attended-class/dtos/ICreateAttendedClassDTO';
 import { IAttendedClassRepository } from '@modules/attended-class/repositories/IAttendedClassRepository';
 
-import { AttendedClass } from '../entities/AttendedClass';
+import { AttendedClass } from '../entities/attended-class';
 
-class AttendedClassRepository implements IAttendedClassRepository {
-  private repository: Repository<AttendedClass>;
-
-  constructor() {
-    this.repository = getRepository(AttendedClass);
-  }
+@EntityRepository(AttendedClass)
+class AttendedClassRepository extends Repository<AttendedClass> {
   async finishClassById(user_id: string, class_id: string): Promise<void> {
     const userId = await this.findByUserId(user_id);
     const attendedClass = await this.findById(class_id);
@@ -21,15 +16,15 @@ class AttendedClassRepository implements IAttendedClassRepository {
       status: true,
     });
 
-    await this.repository.save(attendedClass);
+    await this.save(attendedClass);
   }
 
   async findByUserId(user_id: string): Promise<AttendedClass[]> {
-    return this.repository.find({ where: { user_id }, relations: ['class'] });
+    return this.find({ where: { user_id }, relations: ['class'] });
   }
 
   async findById(id: string): Promise<AttendedClass> {
-    return this.repository.findOne(id);
+    return this.findOne(id);
   }
 }
 

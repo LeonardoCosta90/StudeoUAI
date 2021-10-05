@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe';
 
 import auth from '@config/auth';
 import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
-import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
+import { IDateProvider } from '@shared/container/providers/date-provider/IDateProvider';
 
 import { RefreshTokenError } from './RefreshTokenError';
 

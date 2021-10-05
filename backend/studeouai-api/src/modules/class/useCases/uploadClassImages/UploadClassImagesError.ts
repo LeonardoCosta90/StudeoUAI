@@ -1,7 +1,7 @@
-import { AppError } from "@shared/errors/appError";
+import { AppError } from '@shared/errors/app-error';
 
 export class UploadClassImageError extends AppError {
   constructor() {
-    super("Class not found");
+    super('Class not found');
   }
 }
