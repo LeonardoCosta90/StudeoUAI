@@ -1,10 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { inject, injectable } from 'tsyringe';
 
-import { Class } from "@modules/class/infra/typeorm/entities/Class";
-import { IClassRepository } from "@modules/class/repositories/IClassRepository";
-import { ISpecificationsRepository } from "@modules/class/repositories/ISpecificationsRepository";
+import { Class } from '@modules/class/infra/typeorm/entities/Class';
+import { IClassRepository } from '@modules/class/repositories/IClassRepository';
+import { ISpecificationsRepository } from '@modules/class/repositories/ISpecificationsRepository';
 
-import { CreateClassSpecificationError } from "./CreateClassSpecificationError";
+import { CreateClassSpecificationError } from './CreateClassSpecificationError';
 
 interface IRequest {
   class_id: string;
@@ -14,10 +14,10 @@ interface IRequest {
 @injectable()
 class CreateClassSpecificationUseCase {
   constructor(
-    @inject("ClassRepository")
+    @inject('ClassRepository')
     private classRepository: IClassRepository,
-    @inject("SpecificationsRepository")
-    private specificationRepository: ISpecificationsRepository
+    @inject('SpecificationsRepository')
+    private specificationRepository: ISpecificationsRepository,
   ) {}
 
   async execute({ class_id, specifications_ids }: IRequest): Promise<Class> {
@@ -27,7 +27,7 @@ class CreateClassSpecificationUseCase {
     }
 
     const specifications = await this.specificationRepository.findById(
-      specifications_ids
+      specifications_ids,
     );
     if (specifications.length === 0) {
       throw new CreateClassSpecificationError.SpecificationNotFound();

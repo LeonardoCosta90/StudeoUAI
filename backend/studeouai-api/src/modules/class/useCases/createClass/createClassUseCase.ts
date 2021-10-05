@@ -1,9 +1,9 @@
-import { inject, injectable } from "tsyringe";
+import { inject, injectable } from 'tsyringe';
 
-import { Class } from "@modules/class/infra/typeorm/entities/Class";
-import { IClassRepository } from "@modules/class/repositories/IClassRepository";
+import { Class } from '@modules/class/infra/typeorm/entities/Class';
+import { IClassRepository } from '@modules/class/repositories/IClassRepository';
 
-import { CreateClassError } from "./CreateClassError";
+import { CreateClassError } from './CreateClassError';
 
 interface IRequest {
   name: string;
@@ -14,8 +14,8 @@ interface IRequest {
 @injectable()
 class CreateClassUseCase {
   constructor(
-    @inject("ClassRepository")
-    private classRepository: IClassRepository
+    @inject('ClassRepository')
+    private classRepository: IClassRepository,
   ) {}
 
   async execute({ name, description, category_id }: IRequest): Promise<Class> {
