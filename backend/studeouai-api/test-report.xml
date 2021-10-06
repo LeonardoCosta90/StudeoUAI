@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
+  <file path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/services/user-service.test.ts">
+    <testCase name="Test User Service Should return response with a new user when call to create with success" duration="132"/>
+    <testCase name="Test User Service Should error when try create a exists user" duration="4"/>
+    <testCase name="Test User Service Should return a user when find user by id" duration="3"/>
+    <testCase name="Test User Service Should return error when call to user by id" duration="3"/>
+  </file>
+  <file path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/controllers/user-controller.test.ts">
+    <testCase name="Test user controller Should response 200 when call controller findUserById with success" duration="7"/>
+  </file>
   <file path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/services/update-user-avatar-service.test.ts">
-    <testCase name="Test update user avatar Should return error when call to updateAvatarUser()" duration="26"/>
+    <testCase name="Test update user avatar Should return error when call to updateAvatarUser()" duration="16"/>
+  </file>
+  <file path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/services/profile-service.test.ts">
+    <testCase name="Test Profile Service Should return a profile with success" duration="3"/>
+    <testCase name="Test Profile Service Should return error when call to profile by id" duration="3"/>
   </file>
 </testExecutions>

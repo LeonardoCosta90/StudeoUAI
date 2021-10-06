@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.83% </span>
+                <span class="strong">76.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/24</span>
+                <span class='fraction'>16/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.72% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/22</span>
+                <span class='fraction'>15/20</span>
             </div>
         
             
@@ -89,11 +89,7 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,8 +102,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -116,8 +110,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -129,7 +121,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { StorageProvider } from '@shared/container/providers/StorageProvider';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { S3StorageProvider } from '@shared/providers/storage-provider/s3-storage-provider';
 import { AppError } from '@shared/errors/app-error';
 import { getCustomRepository } from 'typeorm';
 import { UpdateUserAvatarRequest } from '../models/update-avatar-request';
@@ -142,21 +134,17 @@ class UpdateUserAvatarService {
   }: UpdateUserAvatarRequest): Promise&lt;void&gt; {
     const userRepository = getCustomRepository(UsersRepository);
     const userFound = await userRepository.findById(user_id);
-    const storageProvider = new StorageProvider();
-&nbsp;
-    console.log('oi', userFound);
+    const storageProvider = new S3StorageProvider();
 &nbsp;
     <span class="missing-if-branch" title="else path not taken" >E</span>if (!userFound) {
       throw new AppError('User not found', 404);
     }
 &nbsp;
     if (<span class="cstat-no" title="statement not covered" >userFound.</span>avatar) {
-<span class="cstat-no" title="statement not covered" >      await (</span>
-<span class="cstat-no" title="statement not covered" >        await storageProvider.storage()</span>
-      ).delete(userFound.avatar, 'avatar');
+<span class="cstat-no" title="statement not covered" >      await storageProvider.delete(userFound.avatar, 'avatar');</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    await (<span class="cstat-no" title="statement not covered" >await storageProvider.storage()).</span>save(avatar_file, 'avatar');</span>
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >    await storageProvider.save(avatar_file, 'avatar');</span></span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    userFound.avatar = avatar_file;</span>
 &nbsp;
@@ -172,7 +160,7 @@ export { UpdateUserAvatarService };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Sep 29 2021 19:24:49 GMT-0300 (Horário Padrão de Brasília)
+                at Wed Oct 06 2021 20:50:26 GMT-0300 (Horário Padrão de Brasília)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

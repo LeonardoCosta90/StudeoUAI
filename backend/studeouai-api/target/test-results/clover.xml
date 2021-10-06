@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632954289822" clover="3.2.0">
-  <project timestamp="1632954289822" name="All files">
-    <metrics statements="135" coveredstatements="89" conditionals="19" coveredconditionals="2" methods="53" coveredmethods="21" elements="207" coveredelements="112" complexity="0" loc="135" ncloc="135" packages="9" files="10" classes="10"/>
+<coverage generated="1633564226180" clover="3.2.0">
+  <project timestamp="1633564226180" name="All files">
+    <metrics statements="161" coveredstatements="113" conditionals="28" coveredconditionals="9" methods="55" coveredmethods="26" elements="244" coveredelements="148" complexity="0" loc="161" ncloc="161" packages="9" files="11" classes="11"/>
     <package name="config">
       <metrics statements="8" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="upload.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/config/upload.ts">
@@ -16,10 +16,42 @@
         <line num="14" count="0" type="stmt"/>
       </file>
     </package>
+    <package name="modules.accounts.controllers">
+      <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="user-controller.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/controllers/user-controller.ts">
+        <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="modules.accounts.services">
-      <metrics statements="22" coveredstatements="16" conditionals="7" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <metrics statements="55" coveredstatements="47" conditionals="11" coveredconditionals="4" methods="7" coveredmethods="7"/>
+      <file name="profile-service.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/services/profile-service.ts">
+        <metrics statements="11" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
       <file name="update-user-avatar-service.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/services/update-user-avatar-service.ts">
-        <metrics statements="22" coveredstatements="16" conditionals="7" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <metrics statements="20" coveredstatements="15" conditionals="5" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -31,83 +63,108 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="26" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+      </file>
+      <file name="user-service.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/services/user-service.ts">
+        <metrics statements="24" coveredstatements="22" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="44" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
       </file>
     </package>
     <package name="modules.accounts.typeorm.entities">
       <metrics statements="20" coveredstatements="14" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="1"/>
-      <file name="User.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/typeorm/entities/User.ts">
+      <file name="user.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/typeorm/entities/user.ts">
         <metrics statements="20" coveredstatements="14" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="42" count="0" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
       </file>
     </package>
     <package name="modules.accounts.typeorm.repositories">
       <metrics statements="14" coveredstatements="8" conditionals="3" coveredconditionals="0" methods="4" coveredmethods="1"/>
       <file name="users-repository.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/accounts/typeorm/repositories/users-repository.ts">
         <metrics statements="14" coveredstatements="8" conditionals="3" coveredconditionals="0" methods="4" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
         <line num="7" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
         <line num="17" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
         <line num="27" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="33" count="0" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
       </file>
     </package>
     <package name="modules.test.mock">
       <metrics statements="22" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="30" coveredmethods="12"/>
       <file name="typeorm.mock.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/modules/test/mock/typeorm.mock.ts">
         <metrics statements="22" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="30" coveredmethods="12"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="18" count="5" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="18" count="15" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
@@ -115,43 +172,26 @@
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
       </file>
     </package>
-    <package name="shared.container.providers.StorageProvider">
-      <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-      <file name="index.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/container/providers/StorageProvider/index.ts">
-        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+    <package name="shared.errors">
+      <metrics statements="7" coveredstatements="7" conditionals="8" coveredconditionals="5" methods="2" coveredmethods="2"/>
+      <file name="app-error.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/errors/app-error.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="8" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="cond" truecount="4" falsecount="2"/>
+        <line num="12" count="4" type="stmt"/>
       </file>
     </package>
-    <package name="shared.container.providers.StorageProvider.implementations">
-      <metrics statements="31" coveredstatements="20" conditionals="1" coveredconditionals="0" methods="7" coveredmethods="2"/>
-      <file name="LocalStorageProvider.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/container/providers/StorageProvider/implementations/LocalStorageProvider.ts">
-        <metrics statements="13" coveredstatements="9" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-      </file>
-      <file name="S3StorageProvider.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/container/providers/StorageProvider/implementations/S3StorageProvider.ts">
-        <metrics statements="18" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+    <package name="shared.providers.storage-provider">
+      <metrics statements="18" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <file name="s3-storage-provider.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/providers/storage-provider/s3-storage-provider.ts">
+        <metrics statements="18" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -159,7 +199,7 @@
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
@@ -170,17 +210,6 @@
         <line num="40" count="0" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="shared.errors">
-      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
-      <file name="app-error.ts" path="/home/leo/Documentos/projetos/mine/TCC/StudeoUAI/backend/studeouai-api/src/shared/errors/app-error.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="5" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
       </file>
     </package>
     <package name="utils">

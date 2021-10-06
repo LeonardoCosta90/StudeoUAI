@@ -1,4 +1,4 @@
-import { StorageProvider } from '@shared/container/providers/StorageProvider';
+import { S3StorageProvider } from '@shared/providers/storage-provider/s3-storage-provider';
 import { AppError } from '@shared/errors/app-error';
 import { getCustomRepository } from 'typeorm';
 import { UpdateUserAvatarRequest } from '../models/update-avatar-request';
@@ -11,19 +11,17 @@ class UpdateUserAvatarService {
   }: UpdateUserAvatarRequest): Promise<void> {
     const userRepository = getCustomRepository(UsersRepository);
     const userFound = await userRepository.findById(user_id);
-    const storageProvider = new StorageProvider();
+    const storageProvider = new S3StorageProvider();
 
     if (!userFound) {
       throw new AppError('User not found', 404);
     }
 
     if (userFound.avatar) {
-      await (
-        await storageProvider.storage()
-      ).delete(userFound.avatar, 'avatar');
+      await storageProvider.delete(userFound.avatar, 'avatar');
     }
 
-    await (await storageProvider.storage()).save(avatar_file, 'avatar');
+    await storageProvider.save(avatar_file, 'avatar');
 
     userFound.avatar = avatar_file;
 

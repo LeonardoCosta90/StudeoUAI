@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="10.082">
-  <testsuite name="Test update user avatar" errors="0" failures="0" skipped="0" timestamp="2021-09-29T22:24:39" time="9.808" tests="1">
-    <testcase classname="Test update user avatar Should return error when call to updateAvatarUser()" name="Test update user avatar Should return error when call to updateAvatarUser()" time="0.026">
+<testsuites name="jest tests" tests="8" failures="0" errors="0" time="11.288">
+  <testsuite name="Test User Service" errors="0" failures="0" skipped="0" timestamp="2021-10-06T23:50:14" time="8.221" tests="4">
+    <testcase classname="Test User Service Should return response with a new user when call to create with success" name="Test User Service Should return response with a new user when call to create with success" time="0.132">
+    </testcase>
+    <testcase classname="Test User Service Should error when try create a exists user" name="Test User Service Should error when try create a exists user" time="0.004">
+    </testcase>
+    <testcase classname="Test User Service Should return a user when find user by id" name="Test User Service Should return a user when find user by id" time="0.003">
+    </testcase>
+    <testcase classname="Test User Service Should return error when call to user by id" name="Test User Service Should return error when call to user by id" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test user controller" errors="0" failures="0" skipped="0" timestamp="2021-10-06T23:50:23" time="1.684" tests="1">
+    <testcase classname="Test user controller Should response 200 when call controller findUserById with success" name="Test user controller Should response 200 when call controller findUserById with success" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test update user avatar" errors="0" failures="0" skipped="0" timestamp="2021-10-06T23:50:25" time="0.617" tests="1">
+    <testcase classname="Test update user avatar Should return error when call to updateAvatarUser()" name="Test update user avatar Should return error when call to updateAvatarUser()" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test Profile Service" errors="0" failures="0" skipped="0" timestamp="2021-10-06T23:50:25" time="0.266" tests="2">
+    <testcase classname="Test Profile Service Should return a profile with success" name="Test Profile Service Should return a profile with success" time="0.003">
+    </testcase>
+    <testcase classname="Test Profile Service Should return error when call to profile by id" name="Test Profile Service Should return error when call to profile by id" time="0.003">
     </testcase>
   </testsuite>
 </testsuites>

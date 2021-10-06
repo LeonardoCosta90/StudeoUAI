@@ -12,7 +12,7 @@ async function findUserById(
 
     const user = await userService.findUserById(id);
 
-    return response.json(user);
+    return response.status(200).json(user);
   } catch (err) {
     next();
   }
@@ -34,7 +34,7 @@ async function createUser(
       email,
     });
 
-    return response.json(user);
+    return response.status(201).json(user);
   } catch (err) {
     next();
   }
