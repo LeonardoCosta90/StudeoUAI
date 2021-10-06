@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 
 import { CategoryService } from '../services/category-service';
 
-export class CreateCategoryController {
+export class CategoryController {
   async createCategory(
     request: Request,
     response: Response,

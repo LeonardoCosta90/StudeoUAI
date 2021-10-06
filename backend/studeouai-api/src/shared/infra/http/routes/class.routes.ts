@@ -1,41 +1,44 @@
-import { Router } from "express";
-import multer from "multer";
+import { Router } from 'express';
+import multer from 'multer';
 
-import uploadConfig from "@config/upload";
-import { CreateClassController } from "@modules/class/useCases/createClass/createClassController";
-import { CreateClassSpecificationController } from "@modules/class/useCases/createClassSpecification/CreateClassSpecificationController";
-import { UploadClassImagesController } from "@modules/class/useCases/uploadClassImages/UploadClassImagesController";
-import { ensureAdmin } from "@shared/infra/http/middlewares/ensureAdmin";
-import { ensureAuthenticated } from "@shared/infra/http/middlewares/ensureAuthenticated";
+import uploadConfig from '@config/upload';
+import { ClassController } from '@modules/class/controllers/class-controller';
+import { SpecificationClassController } from '@modules/class/controllers/specifications-class-controller';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
+import { validateBody, validateParams } from '../middlewares/validations';
+import validation from '../validations/validation';
+import { ensureAdmin } from '../middlewares/ensureAdmin';
 
 const classRoutes = Router();
 
-const createClassController = new CreateClassController();
-const createClassSpecificationController = new CreateClassSpecificationController();
-const uploadClassImagesController = new UploadClassImagesController();
-
-classRoutes.post(
-  "/",
-  ensureAuthenticated,
-  ensureAdmin,
-  createClassController.handle
-);
-
-classRoutes.post(
-  "/specifications/:id",
-  ensureAuthenticated,
-  ensureAdmin,
-  createClassSpecificationController.handle
-);
+const classController = new ClassController();
+const specificationClassController = new SpecificationClassController();
 
 const uploadClassImages = multer(uploadConfig);
 
 classRoutes.post(
-  "/images/:id",
+  '/',
   ensureAuthenticated,
   ensureAdmin,
-  uploadClassImages.array("images"),
-  uploadClassImagesController.handle
+  validateBody(validation.createClassValidation),
+  classController.createClass,
+);
+
+classRoutes.post(
+  '/specifications/:id',
+  ensureAuthenticated,
+  ensureAdmin,
+  validateParams(validation.specificationIdValidation),
+  validateBody(validation.idValidation),
+  specificationClassController.specificationClass,
+);
+
+classRoutes.post(
+  '/images/:id',
+  ensureAuthenticated,
+  ensureAdmin,
+  uploadClassImages.array('images'),
+  classController.createImage,
 );
 
 export { classRoutes };
