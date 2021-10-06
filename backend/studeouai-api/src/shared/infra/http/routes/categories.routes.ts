@@ -1,26 +1,24 @@
 import { Router } from 'express';
-import multer from 'multer';
 
-import uploadConfig from '@config/upload';
-import { CreateCategoryController } from '@modules/class/useCases/createCategory/CreateCategoryController';
-import { ListCategoriesController } from '@modules/class/useCases/listCategories/ListCategoriesController';
+import { CategoryController } from '@modules/class/controllers/category-controller';
 import { ensureAdmin } from '@shared/infra/http/middlewares/ensureAdmin';
 import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
+import { validateBody } from '../middlewares/validations';
+
+import validation from '../validations/validation';
 
 const categoriesRoutes = Router();
 
-const upload = multer(uploadConfig);
-
-const createCategoryController = new CreateCategoryController();
-const listCategoriesController = new ListCategoriesController();
+const categoryController = new CategoryController();
 
 categoriesRoutes.post(
   '/',
   ensureAuthenticated,
   ensureAdmin,
-  createCategoryController.handle,
+  validateBody(validation.createCategoryValidation),
+  categoryController.createCategory,
 );
 
-categoriesRoutes.get('/', listCategoriesController.handle);
+categoriesRoutes.get('/', ensureAuthenticated, categoryController.listCategory);
 
 export { categoriesRoutes };

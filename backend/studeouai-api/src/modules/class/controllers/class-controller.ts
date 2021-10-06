@@ -26,7 +26,7 @@ export class ClassController {
     }
   }
 
-  async handle(
+  async createImage(
     request: Request,
     response: Response,
     next: NextFunction,

@@ -11,7 +11,7 @@ import { SpecificationsRepository } from '../typeorm/repositories/specifications
 export class SpecificationClassService {
   async createSpecificationClass({
     class_id,
-    specifications_ids,
+    specifications_id,
   }: SpecificationClassRequest): Promise<Class> {
     const classRepository = getCustomRepository(ClassRepository);
     const specificationsRepository = getCustomRepository(
@@ -25,7 +25,7 @@ export class SpecificationClassService {
     }
 
     const specifications = await specificationsRepository.findSpecificationById(
-      specifications_ids,
+      specifications_id,
     );
 
     if (specifications.length === 0) {

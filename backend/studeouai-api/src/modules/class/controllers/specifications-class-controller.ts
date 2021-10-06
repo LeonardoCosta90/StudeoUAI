@@ -9,12 +9,12 @@ export class SpecificationClassController {
   ): Promise<Response> {
     try {
       const { id } = request.params;
-      const { specifications_ids } = request.body;
+      const { specifications_id } = request.body;
 
       const specificationClassService = new SpecificationClassService();
       const _class = await specificationClassService.createSpecificationClass({
         class_id: id,
-        specifications_ids,
+        specifications_id,
       });
 
       return response.status(201).json(_class);
