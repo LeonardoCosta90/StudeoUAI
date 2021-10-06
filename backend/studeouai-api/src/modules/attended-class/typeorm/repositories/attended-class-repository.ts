@@ -1,12 +1,13 @@
-import { EntityRepository, getRepository, Repository } from 'typeorm';
-
-import { IAttendedClassRepository } from '@modules/attended-class/repositories/IAttendedClassRepository';
+import { EntityRepository, Repository } from 'typeorm';
 
 import { AttendedClass } from '../entities/attended-class';
 
 @EntityRepository(AttendedClass)
 class AttendedClassRepository extends Repository<AttendedClass> {
-  async finishClassById(user_id: string, class_id: string): Promise<void> {
+  async finishClassById(
+    user_id: string,
+    class_id: string,
+  ): Promise<AttendedClass> {
     const userId = await this.findByUserId(user_id);
     const attendedClass = await this.findById(class_id);
 
@@ -16,7 +17,7 @@ class AttendedClassRepository extends Repository<AttendedClass> {
       status: true,
     });
 
-    await this.save(attendedClass);
+    return await this.save(attendedClass);
   }
 
   async findByUserId(user_id: string): Promise<AttendedClass[]> {
