@@ -11,6 +11,7 @@ export class CategoryService {
     description,
   }: CreateCategoryRequest): Promise<void> {
     const categoriesRepo = getCustomRepository(CategoriesRepository);
+    console.log('oi');
     const categoryExist = await categoriesRepo.findCategoryByName(name);
 
     if (categoryExist) {
@@ -23,6 +24,7 @@ export class CategoryService {
   async listCategory(): Promise<Category[]> {
     const categoriesRepo = getCustomRepository(CategoriesRepository);
     const categories = await categoriesRepo.listCategory();
+
     return categories;
   }
 }

@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { AttendedClassController } from '@modules/attended-class/controllers/attended-class-controller';
 
-import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+import { ensureAuthenticated } from '../middlewares/ensure-authenticated';
 import { validateBody } from '../middlewares/validations';
 import validation from '../validations/validation';
 

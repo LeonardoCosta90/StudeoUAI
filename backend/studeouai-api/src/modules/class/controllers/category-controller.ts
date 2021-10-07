@@ -13,9 +13,14 @@ export class CategoryController {
 
       const categoryService = new CategoryService();
 
-      await categoryService.createCategory({ name, description });
+      const createCategoryResponse = await categoryService.createCategory({
+        name,
+        description,
+      });
 
-      return response.status(201).send();
+      console.log(createCategoryResponse);
+
+      return response.status(201).send(createCategoryResponse);
     } catch (err) {
       next();
     }
@@ -28,7 +33,6 @@ export class CategoryController {
   ): Promise<Response> {
     try {
       const categoryService = new CategoryService();
-
       const categories = await categoryService.listCategory();
 
       return response.json(categories);

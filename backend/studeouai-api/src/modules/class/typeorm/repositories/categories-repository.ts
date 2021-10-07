@@ -5,27 +5,26 @@ import { Category } from '../entities/category';
 
 @EntityRepository(Category)
 export class CategoriesRepository extends Repository<Category> {
-  private repository: Repository<Category>;
-
   async createCategory({
     name,
     description,
   }: CreateCategoryRequest): Promise<void> {
-    const category = this.repository.create({
+    const category = this.create({
       description,
       name,
     });
 
-    await this.repository.save(category);
+    await this.save(category);
   }
 
   async listCategory(): Promise<Category[]> {
-    const categories = await this.repository.find();
+    const categories = await this.find();
     return categories;
   }
 
   async findCategoryByName(name: string): Promise<Category> {
-    const category = await this.repository.findOne({
+    console.log('findCategoryByName');
+    const category = await this.findOne({
       name,
     });
     return category;

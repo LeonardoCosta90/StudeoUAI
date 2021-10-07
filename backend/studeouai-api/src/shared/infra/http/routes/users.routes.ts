@@ -1,7 +1,7 @@
 import multer from 'multer';
 import { Router } from 'express';
 
-import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensure-authenticated';
 import { validateBody } from '../../http/middlewares/validations';
 
 import profileController from '@modules/accounts/controllers/profile-controller';
