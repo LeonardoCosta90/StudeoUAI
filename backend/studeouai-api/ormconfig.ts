@@ -1,0 +1,33 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const env = require('dotenv');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
+
+env.config({
+  path: path.join(
+    __dirname,
+    process.env.NODE_ENV ? `/.env.${process.env.NODE_ENV}` : '',
+  ),
+});
+
+process.env.ENVIRONMENT = process.env.ENVIRONMENT || process.env.NODE_ENV;
+
+const basePath = process.env.ENVIRONMENT === 'dev' ? './src/' : './dist/';
+
+module.exports = {
+  type: process.env.DATABASE_TYPE || 'mysql',
+  host: process.env.DATABASE_URL,
+  port: parseInt(process.env.DATABASE_PORT, 10),
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
+  migrationsRun: true,
+  synchronize: false,
+  logging: process.env.DATABASE_LOGGING === 'true',
+  entities: [`${basePath}modules/**/typeorm/entities/*{.ts,.js}`],
+  migrations: [`${basePath}shared/infra/typeorm/migrations/*{.ts,.js}`],
+  cli: {
+    entitiesDir: 'src/modules/**/typeorm/entities',
+    migrationsDir: 'shared/infra/typeorm/migrations',
+  },
+};

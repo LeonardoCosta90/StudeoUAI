@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from "express";
-import { verify } from "jsonwebtoken";
+import { NextFunction, Request, Response } from 'express';
+import { verify } from 'jsonwebtoken';
 
-import auth from "@config/auth";
-import { EnsureAuthenticatedError } from "@shared/errors/EnsureAuthenticatedError";
+import auth from '@config/auth';
+import { AppError } from '@shared/errors/app-error';
 
 interface IPayload {
   sub: string;
@@ -11,14 +11,14 @@ interface IPayload {
 export async function ensureAuthenticated(
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> {
   const authHeader = request.headers.authorization;
   if (!authHeader) {
-    throw new EnsureAuthenticatedError.TokenMissing();
+    throw new AppError('Token is missing', 401);
   }
 
-  const [, token] = authHeader.split(" ");
+  const [, token] = authHeader.split(' ');
   try {
     const { sub: user_id } = verify(token, auth.secret_token) as IPayload;
 
@@ -27,6 +27,6 @@ export async function ensureAuthenticated(
     };
     next();
   } catch (error) {
-    throw new EnsureAuthenticatedError.InvalidToken();
+    throw new AppError('Invalid token', 401);
   }
 }

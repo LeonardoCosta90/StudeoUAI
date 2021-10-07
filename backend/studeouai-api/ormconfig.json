@@ -1,16 +1,15 @@
 {
   "type": "postgres",
-
   "host": "localhost",
   "port": 5432,
   "username": "studeouai-user",
   "password": "studeouai-pass",
   "database": "studeouai",
-
+  "migrationsRun": true,
+  "synchronize": false,
   "entities": [
-    "./src/modules/**/entities/*.ts"
+    "./src/modules/**/typeorm/entities/*.ts"
   ],
-
   "migrations": [
     "./src/shared/infra/typeorm/migrations/*.ts"
   ],
@@ -18,6 +17,5 @@
   "cli": {
     "migrationsDir": "./src/shared/infra/typeorm/migrations"
   },
-
   "logging": false
 }

@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 
-import { UsersRepository } from "@modules/accounts/infra/repositories/UsersRepository";
-import { EnsureAdminError } from "@shared/errors/EnsureAdminError";
+import { UsersRepository } from '@modules/accounts/typeorm/repositories/users-repository';
+import { AppError } from '@shared/errors/app-error';
 
 export async function ensureAdmin(
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> {
   const { id } = request.user;
 
@@ -14,7 +14,7 @@ export async function ensureAdmin(
   const user = await usersRepository.findById(id);
 
   if (!user.isAdmin) {
-    throw new EnsureAdminError();
+    throw new AppError('Is not a admin', 401);
   }
   next();
 }
