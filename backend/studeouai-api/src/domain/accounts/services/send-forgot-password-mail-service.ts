@@ -15,7 +15,7 @@ export class SendForgotPasswordMailService {
   async sendForgotPasswordMail(email: string): Promise<void> {
     const userRepository = getCustomRepository(UsersRepository);
     const daysProvider = new DayjsDateProvider();
-    const userTokenRepository = new UsersTokensRepository();
+    const userTokenRepository = getCustomRepository(UsersTokensRepository);
     const user = await userRepository.findByEmail(email);
 
     if (!user) {
@@ -25,11 +25,13 @@ export class SendForgotPasswordMailService {
     const expires_date = daysProvider.addHours(3, null);
     const token = uuidV4();
 
-    await userTokenRepository.create({
+    const userToken = userTokenRepository.create({
       refresh_token: token,
       user_id: user.id,
       expires_date,
     });
+
+    userTokenRepository.save(userToken);
 
     const transporter = createTransport({
       host: process.env.SMTP_HOST,

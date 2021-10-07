@@ -10,6 +10,8 @@ class ResetUsersPasswordController {
     const { token } = request.query;
     const { password } = request.body;
 
+    console.log('reset users password', token, password);
+
     const resetUsersPasswordService = new ResetUsersPasswordService();
 
     await resetUsersPasswordService.resetUsersPassword({
