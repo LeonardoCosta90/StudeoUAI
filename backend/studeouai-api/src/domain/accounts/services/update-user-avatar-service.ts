@@ -23,9 +23,12 @@ class UpdateUserAvatarService {
 
     await storageProvider.save(avatar_file, 'avatar');
 
-    userFound.avatar = avatar_file;
+    const url = `https://${process.env.AWS_BUCKET}.s3.sa-east-1.amazonaws.com/avatar/${avatar_file}`;
 
-    await userRepository.create(userFound);
+    await userRepository.save({
+      ...userFound,
+      avatar: url,
+    });
   }
 }
 
