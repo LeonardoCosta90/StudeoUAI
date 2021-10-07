@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { ResetUsersPasswordController } from '@modules/accounts/controllers/reset-users-password-controller';
-import { SendForgotPasswordMailController } from '@modules/accounts/controllers/send-forgot-password-mail-controller';
+import { ResetUsersPasswordController } from '@domain/accounts/controllers/reset-users-password-controller';
+import { SendForgotPasswordMailController } from '@domain/accounts/controllers/send-forgot-password-mail-controller';
 import { validateBody, validateQuery } from '../middlewares/validations';
 import validation from '../validations/validation';
 

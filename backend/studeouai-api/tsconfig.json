@@ -6,11 +6,11 @@
     "rootDir": "./",
     "baseUrl": "./src/",
     "paths": {
-      "@modules/*": [
-        "modules/*"
-      ],
       "@config/*": [
         "config/*"
+      ],
+      "@domain/*": [
+        "domain/*"
       ],
       "@shared/*": [
         "shared/*"

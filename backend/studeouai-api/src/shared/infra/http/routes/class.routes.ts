@@ -2,8 +2,8 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import uploadConfig from '@config/upload';
-import { ClassController } from '@modules/class/controllers/class-controller';
-import { SpecificationClassController } from '@modules/class/controllers/specifications-class-controller';
+import { ClassController } from '@domain/class/controllers/class-controller';
+import { SpecificationClassController } from '@domain/class/controllers/specifications-class-controller';
 import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensure-authenticated';
 import { validateBody, validateParams } from '../middlewares/validations';
 import validation from '../validations/validation';

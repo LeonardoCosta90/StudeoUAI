@@ -4,9 +4,9 @@ import { Router } from 'express';
 import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensure-authenticated';
 import { validateBody } from '../../http/middlewares/validations';
 
-import profileController from '@modules/accounts/controllers/profile-controller';
-import userController from '@modules/accounts/controllers/user-controller';
-import updateAvatarController from '@modules/accounts/controllers/update-user-avatar-controller';
+import profileController from '@domain/accounts/controllers/profile-controller';
+import userController from '@domain/accounts/controllers/user-controller';
+import updateAvatarController from 'domain/accounts/controllers/update-user-avatar-controller';
 import uploadConfig from '@config/upload';
 import validation from '../validations/validation';
 
