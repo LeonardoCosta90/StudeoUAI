@@ -7,8 +7,6 @@ async function profileById(
 ): Promise<Response> {
   const { id } = request.params;
 
-  console.log(id);
-
   const profileService = new ProfileService();
 
   const profile = await profileService.findProfileById(id);

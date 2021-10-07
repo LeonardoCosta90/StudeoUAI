@@ -16,10 +16,10 @@ export default async function updateAvatarUser(
 
   const updateUserAvatarService = new UpdateUserAvatarService();
 
-  await updateUserAvatarService.updateAvatarUser({
+  const userResponse = await updateUserAvatarService.updateAvatarUser({
     user_id,
     avatar_file,
   });
 
-  return response.status(204).send();
+  return response.status(200).send(userResponse);
 }
