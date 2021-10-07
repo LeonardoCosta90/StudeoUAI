@@ -2,7 +2,10 @@ import multer from 'multer';
 import { Router } from 'express';
 
 import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensure-authenticated';
-import { validateBody } from '../../http/middlewares/validations';
+import {
+  validateBody,
+  validateParams,
+} from '../../http/middlewares/validations';
 
 import profileController from '@domain/accounts/controllers/profile-controller';
 import userController from '@domain/accounts/controllers/user-controller';
@@ -27,9 +30,9 @@ usersRoutes.post(
 );
 
 usersRoutes.get(
-  '/profile',
+  '/profile/:id',
   ensureAuthenticated,
-  validateBody(validation.createUserValidation),
+  validateParams(validation.idValidation),
   profileController.profileById,
 );
 

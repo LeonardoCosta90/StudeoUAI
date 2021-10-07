@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 import { CategoryService } from '../services/category-service';
 
@@ -6,7 +6,6 @@ export class CategoryController {
   async createCategory(
     request: Request,
     response: Response,
-    next: NextFunction,
   ): Promise<Response> {
     const { name, description } = request.body;
 
