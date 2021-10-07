@@ -12,22 +12,19 @@ env.config({
 
 process.env.ENVIRONMENT = process.env.ENVIRONMENT || process.env.NODE_ENV;
 
-const basePath = process.env.ENVIRONMENT === 'dev' ? './src/' : './dist/';
-
 module.exports = {
-  type: process.env.DATABASE_TYPE || 'mysql',
+  type: process.env.DATABASE_TYPE,
   host: process.env.DATABASE_URL,
   port: parseInt(process.env.DATABASE_PORT, 10),
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   migrationsRun: true,
-  synchronize: false,
   logging: process.env.DATABASE_LOGGING === 'true',
-  entities: [`${basePath}modules/**/typeorm/entities/*{.ts,.js}`],
-  migrations: [`${basePath}shared/infra/typeorm/migrations/*{.ts,.js}`],
+  entities: [`./src/modules/**/typeorm/entities/*{.ts,.js}`],
+  migrations: [`./src/shared/infra/typeorm/migrations/*{.ts,.js}`],
   cli: {
     entitiesDir: 'src/modules/**/typeorm/entities',
-    migrationsDir: 'shared/infra/typeorm/migrations',
+    migrationsDir: 'src/shared/infra/typeorm/migrations',
   },
 };

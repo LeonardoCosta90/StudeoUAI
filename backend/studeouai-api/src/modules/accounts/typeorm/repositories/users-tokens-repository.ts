@@ -32,7 +32,7 @@ export class UsersTokensRepository extends Repository<UsersTokens> {
     refresh_token,
     expires_date,
   }: TokenRequest): Promise<UsersTokens> {
-    const userToken = this.create({
+    const userToken = await this.create({
       user_id,
       refresh_token,
       expires_date,

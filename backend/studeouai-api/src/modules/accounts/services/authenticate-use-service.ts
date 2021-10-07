@@ -13,9 +13,9 @@ import { LoginResponse } from '../models/login-response';
 
 export class AuthenticateUserService {
   async auth({ email, password }: LoginRequest): Promise<LoginResponse> {
-    const usersRepository = getCustomRepository(UsersRepository);
     const daysProvider = new DayjsDateProvider();
-    const userTokenRepository = new UsersTokensRepository();
+    const usersRepository = getCustomRepository(UsersRepository);
+    const userTokenRepository = getCustomRepository(UsersTokensRepository);
 
     const {
       expires_in,
