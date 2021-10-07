@@ -40,6 +40,7 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn ./src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
+    "migration:generate": "cross-env NODE_ENV=dev yarn run typeorm migration:generate -n",
     "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seeds/admin.ts",
     "lint:fix": "eslint --fix . --ext ts,tsx",
     "test": "cross-env NODE_ENV=test HTTP_PORT=3333 jest --coverage --passWithNoTests --detectOpenHandles --runInBand"
@@ -71,8 +72,11 @@
     "prettier": "^2.2.1",
     "supertest": "^6.1.6",
     "ts-jest": "^27.0.5",
+    "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",
-    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths": "^3.10.1",
+    "tscpaths": "^0.0.9",
+    "tslint": "^6.1.3",
     "typescript": "^4.3.2"
   }
 }

@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from "express";
-import { RateLimiterRedis } from "rate-limiter-flexible";
-import redis from "redis";
+import { NextFunction, Request, Response } from 'express';
+import { RateLimiterRedis } from 'rate-limiter-flexible';
+import redis from 'redis';
 
-import { RateLimiterError } from "@shared/errors/RateLimiterError";
+import { RateLimiterError } from '@shared/errors/rate-limiter-error';
 
 const redisClient = redis.createClient({
   host: process.env.REDIS_HOST,
@@ -12,7 +12,7 @@ const redisClient = redis.createClient({
 
 const limiter = new RateLimiterRedis({
   storeClient: redisClient,
-  keyPrefix: "rateLimiter",
+  keyPrefix: 'rateLimiter',
   points: Number(process.env.REDIS_NUMBER_OF_REQUEST),
   duration: Number(process.env.REDIS_TIME_BETWEEN_REQUESTS),
 });
@@ -20,7 +20,7 @@ const limiter = new RateLimiterRedis({
 export default async function rateLimiter(
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> {
   try {
     await limiter.consume(request.ip);

@@ -2,7 +2,7 @@ import { Expose } from 'class-transformer';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-@Entity('userss')
+@Entity('users')
 class User {
   @PrimaryColumn()
   id: string;

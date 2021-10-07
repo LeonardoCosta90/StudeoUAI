@@ -4,7 +4,7 @@ import fs from 'fs';
 import handlebars from 'handlebars';
 import { v4 as uuidV4 } from 'uuid';
 
-import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayJsDateProvider';
+import { DayjsDateProvider } from '@shared/providers/date-provider/dayjs-date-provider';
 
 import { UsersRepository } from '../typeorm/repositories/users-repository';
 import { UsersTokensRepository } from '../typeorm/repositories/users-tokens-repository';

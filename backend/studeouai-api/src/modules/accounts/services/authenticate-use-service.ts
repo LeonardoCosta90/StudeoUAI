@@ -4,7 +4,7 @@ import { sign } from 'jsonwebtoken';
 
 import { AppError } from '@shared/errors/app-error';
 import auth from '@config/auth';
-import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayJsDateProvider';
+import { DayjsDateProvider } from '@shared/providers/date-provider/dayjs-date-provider';
 import { UsersRepository } from '../typeorm/repositories/users-repository';
 import { UsersTokensRepository } from '../typeorm/repositories/users-tokens-repository';
 
@@ -13,9 +13,9 @@ import { LoginResponse } from '../models/login-response';
 
 export class AuthenticateUserService {
   async auth({ email, password }: LoginRequest): Promise<LoginResponse> {
-    const usersRepository = getCustomRepository(UsersRepository);
     const daysProvider = new DayjsDateProvider();
-    const userTokenRepository = new UsersTokensRepository();
+    const usersRepository = getCustomRepository(UsersRepository);
+    const userTokenRepository = getCustomRepository(UsersTokensRepository);
 
     const {
       expires_in,
