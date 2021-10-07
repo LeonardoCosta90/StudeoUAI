@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
-import { CategoryController } from '@modules/class/controllers/category-controller';
-import { ensureAdmin } from '@shared/infra/http/middlewares/ensureAdmin';
-import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
+import { CategoryController } from '@domain/class/controllers/category-controller';
+import { ensureAdmin } from '@shared/infra/http/middlewares/ensure-admin';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensure-authenticated';
 import { validateBody } from '../middlewares/validations';
 
 import validation from '../validations/validation';

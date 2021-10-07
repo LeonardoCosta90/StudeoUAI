@@ -10,11 +10,11 @@ import swaggerUi from 'swagger-ui-express';
 import upload from '@config/upload';
 import * as Sentry from '@sentry/node';
 import * as Tracing from '@sentry/tracing';
-import { handlingErrors } from '@shared/infra/http/middlewares/handlingErrors';
+import { handlingErrors } from '@shared/infra/http/middlewares/handling-errors';
 import createConnection from '@shared/infra/typeorm';
 
 import swaggerFile from '../../../swagger.json';
-import rateLimiter from './middlewares/rateLimiter';
+import rateLimiter from './middlewares/rate-limiter';
 import { router } from './routes';
 
 createConnection();

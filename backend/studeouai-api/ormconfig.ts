@@ -21,10 +21,10 @@ module.exports = {
   database: process.env.DATABASE_NAME,
   migrationsRun: true,
   logging: process.env.DATABASE_LOGGING === 'true',
-  entities: [`./src/modules/**/typeorm/entities/*{.ts,.js}`],
+  entities: [`./src/domain/**/typeorm/entities/*{.ts,.js}`],
   migrations: [`./src/shared/infra/typeorm/migrations/*{.ts,.js}`],
   cli: {
-    entitiesDir: 'src/modules/**/typeorm/entities',
+    entitiesDir: 'src/domain/**/typeorm/entities',
     migrationsDir: 'src/shared/infra/typeorm/migrations',
   },
 };
