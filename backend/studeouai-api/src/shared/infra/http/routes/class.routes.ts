@@ -16,6 +16,13 @@ const specificationClassController = new SpecificationClassController();
 
 const uploadClassImages = multer(uploadConfig);
 
+classRoutes.get(
+  '/',
+  ensureAuthenticated,
+  ensureAdmin,
+  classController.listClass,
+);
+
 classRoutes.post(
   '/',
   ensureAuthenticated,

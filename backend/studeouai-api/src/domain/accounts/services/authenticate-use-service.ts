@@ -60,8 +60,10 @@ export class AuthenticateUserService {
 
     return {
       user: {
+        id: user.id,
         email: user.email,
         name: user.name,
+        avatar: user.avatar,
       },
       token,
       refresh_token,

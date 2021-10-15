@@ -47,4 +47,16 @@ export class UserService {
 
     return user;
   }
+
+  async findUserByEmail(email: string): Promise<User> {
+    const userRepository = getCustomRepository(UsersRepository);
+
+    const user = await userRepository.findByEmail(email);
+
+    if (!user) {
+      throw new AppError('User not found', 404);
+    }
+
+    return user;
+  }
 }

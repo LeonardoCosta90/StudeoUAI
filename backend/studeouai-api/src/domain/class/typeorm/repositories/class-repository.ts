@@ -12,27 +12,33 @@ export class ClassRepository extends Repository<Class> {
     category_id,
     description,
     name,
-    specifications,
   }: CreateClassRequest): Promise<Class> {
-    const _class = this.repository.create({
+    const _class = this.create({
       id,
+      available: true,
       category_id,
       description,
       name,
-      specifications,
     });
 
-    await this.repository.save(_class);
+    await this.save(_class);
+    return _class;
+  }
+
+  async listClass(): Promise<Class[]> {
+    const _class = await this.find();
     return _class;
   }
 
   async findClassById(id: string): Promise<Class> {
-    const _class = await this.repository.findOne(id);
+    const _class = await this.repository.findOne({ id });
     return _class;
   }
 
   async findClassByName(name: string): Promise<Class> {
-    const _class = await this.repository.findOne(name);
+    const _class = await this.findOne({
+      name,
+    });
     return _class;
   }
 }

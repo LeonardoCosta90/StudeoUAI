@@ -17,8 +17,7 @@ passwordRoutes.post(
 );
 passwordRoutes.post(
   '/reset',
-  validateQuery(validation.resetTokenValidation),
-  validateBody(validation.resetPassValidation),
+
   resetUsersPasswordController.resetUsersPassword,
 );
 

@@ -17,7 +17,7 @@ export class ResetUsersPasswordService {
   }: ResetUserPasswordRequest): Promise<void> {
     const daysProvider = new DayjsDateProvider();
     const usersRepository = getCustomRepository(UsersRepository);
-    const usersTokenRepository = new UsersTokensRepository();
+    const usersTokenRepository = getCustomRepository(UsersTokensRepository);
     const userToken = await usersTokenRepository.findByRefreshToken(token);
 
     if (!userToken) {
@@ -34,7 +34,7 @@ export class ResetUsersPasswordService {
       password,
       Number(process.env.DEFAULT_HASH_SAULT),
     );
-    usersRepository.create(user);
+    usersRepository.save(user);
 
     await usersTokenRepository.deleteById(userToken.id);
   }
