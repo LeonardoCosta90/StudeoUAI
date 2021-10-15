@@ -23,10 +23,19 @@ export class ClassService {
     }
 
     const _class = classRepo.createClass({
+      available: true,
       name,
       description,
       category_id,
     });
+
+    return _class;
+  }
+
+  async listClass(): Promise<Class[]> {
+    const classRepo = getCustomRepository(ClassRepository);
+    const _class = await classRepo.listClass();
+
     return _class;
   }
 

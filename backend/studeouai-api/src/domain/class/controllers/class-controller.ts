@@ -10,6 +10,7 @@ export class ClassController {
     const classService = new ClassService();
 
     const _class = await classService.createClass({
+      available: true,
       category_id,
       description,
       name,
@@ -32,5 +33,12 @@ export class ClassController {
     });
 
     return response.status(201).send();
+  }
+
+  async listClass(request: Request, response: Response): Promise<Response> {
+    const classService = new ClassService();
+    const _class = await classService.listClass();
+
+    return response.json(_class);
   }
 }

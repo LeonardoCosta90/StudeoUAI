@@ -13,6 +13,18 @@ async function findUserById(
   return response.status(200).json(user);
 }
 
+async function findUserByEmail(
+  request: Request,
+  response: Response,
+): Promise<Response> {
+  const { email } = request.body;
+  const userService = new UserService();
+
+  const user = await userService.findUserByEmail(email);
+
+  return response.status(200).json(user);
+}
+
 async function createUser(
   request: Request,
   response: Response,
@@ -33,4 +45,5 @@ async function createUser(
 export default {
   createUser,
   findUserById,
+  findUserByEmail,
 };

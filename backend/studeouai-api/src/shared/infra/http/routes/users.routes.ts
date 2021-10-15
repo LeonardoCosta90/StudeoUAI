@@ -23,6 +23,12 @@ usersRoutes.get(
   userController.findUserById,
 );
 
+usersRoutes.get(
+  '/email',
+  validateBody(validation.getEmailValidation),
+  userController.findUserById,
+);
+
 usersRoutes.post(
   '/',
   validateBody(validation.createUserValidation),
@@ -31,7 +37,7 @@ usersRoutes.post(
 
 usersRoutes.get(
   '/profile/:id',
-  ensureAuthenticated,
+  //ensureAuthenticated,
   validateParams(validation.idValidation),
   profileController.profileById,
 );
