@@ -26,6 +26,7 @@ import Input from '../../components/Input';
 import validationErrors from '../../utils/validateErrors';
 import toast, { Toaster } from 'react-hot-toast';
 interface SignInFormData {
+  name: string;
   email: string;
   password: string;
 }
@@ -61,7 +62,7 @@ export function Login() {
       });
 
       toast.success('Usuário cadastrado com sucesso!');
-      history.push('/dashboard');
+      history.push('/simple-piston');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = validationErrors(err);

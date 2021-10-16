@@ -30,7 +30,6 @@ interface UserFormData {
   name: string;
   email: string;
   password: string;
-  driver_license: string;
 }
 
 const CreateUser: React.FC = () => {
@@ -58,7 +57,6 @@ const CreateUser: React.FC = () => {
           name: Yup.string().required('Nome obrigatório.'),
           email: Yup.string().required('Email obrigatório.'),
           password: Yup.string().required('Senha obrigatória.'),
-          driver_license: Yup.string().required('Carteira de motorista obrigatória.'),
         });
 
         await schema.validate(data, {
@@ -69,7 +67,6 @@ const CreateUser: React.FC = () => {
           name: data.name,
           email: data.email,
           password: data.password,
-          driver_license: data.driver_license
         })
 
         createUserSuccess();
