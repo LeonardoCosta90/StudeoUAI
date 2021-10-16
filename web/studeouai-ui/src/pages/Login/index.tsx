@@ -59,7 +59,7 @@ export function Login() {
         password: data.password,
       });
 
-      history.push('/dashboard');
+      history.push('/simple-piston');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = validationErrors(err);

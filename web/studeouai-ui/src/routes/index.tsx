@@ -20,7 +20,7 @@ import Details from '../pages/Class/Details';
 import CreateClass from '../pages/Class/CreateClass';
 import EditCar from '../pages/Class/EditClass';
 
-import Rentals from '../pages/Rentals';
+import AttendedClass from '../pages/AttendedClass';
 import Welcome from '../pages/Welcome';
 import Register from '../pages/Register';
 
@@ -47,7 +47,7 @@ const Routes: React.FC = () => {
         <Route path="/class/create-class" exact component={CreateClass} isPrivate />
         <Route path="/class/edit-class" exact component={EditCar} isPrivate />
 
-        <Route path="/rentals" exact component={Rentals} isPrivate />
+        <Route path="/attended-class" exact component={AttendedClass} isPrivate />
       </Switch>
     </BrowserRouter>
   );

@@ -35,8 +35,8 @@ export const AuthContext = createContext<AuthContextData>(
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
-    const token = localStorage.getItem('@Calculator-Rentx:token');
-    const user = localStorage.getItem('@Calculator-Rentx:user');
+    const token = localStorage.getItem('@studeouai:token');
+    const user = localStorage.getItem('@studeouai:user');
 
     if (token && user) {
       api.defaults.headers.authorization = `Bearer ${token}`;
@@ -60,8 +60,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     refresh_token_new = refresh_token;
 
-    localStorage.setItem('@Calculator-Rentx:token', token);
-    localStorage.setItem('@Calculator-Rentx:user', JSON.stringify(user));
+    localStorage.setItem('@studeouai:token', token);
+    localStorage.setItem('@studeouai:user', JSON.stringify(user));
 
     api.defaults.headers.authorization = `Bearer ${token}`;
 
@@ -69,14 +69,14 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@Calculator-Rentx:token');
-    localStorage.removeItem('@Calculator-Rentx:user');
+    localStorage.removeItem('@studeouai:token');
+    localStorage.removeItem('@studeouai:user');
 
     setData({} as AuthState);
   }, []);
 
   const verifyTokenExpiration = useCallback(async () => {
-    const token = localStorage.getItem('@Calculator-Rentx:token');
+    const token = localStorage.getItem('@studeouai:token');
 
     if (token) {
       const { exp } = decode(token) as JwtPayload;
@@ -89,8 +89,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
           const { token: refresh_token } = response.data;
 
-          localStorage.removeItem('@Calculator-Rentx:token');
-          localStorage.setItem('@Calculator-Rentx:token', refresh_token);
+          localStorage.removeItem('@studeouai:token');
+          localStorage.setItem('@studeouai:token', refresh_token);
 
           api.defaults.headers.authorization = `Bearer ${refresh_token}`;
 

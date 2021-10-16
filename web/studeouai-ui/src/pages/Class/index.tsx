@@ -97,7 +97,7 @@ const Class: React.FC = () => {
         <Toaster position="top-right" reverseOrder={false} />
          <BackButtonTitleContainer>
           <BackButton>
-              <Link to="/dashboard">
+              <Link to="/simple-piston">
                 <span>
                   <FiArrowLeft
                     size={25}
@@ -122,6 +122,7 @@ const Class: React.FC = () => {
             <tr>
               <th>Nome</th>
               <th>Descrição</th>
+              <th>Categoria</th>
               <th>Ações</th>
             </tr>
           </Thead>
