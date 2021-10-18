@@ -56,7 +56,7 @@ const CreateCategory: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('categories', {
+        await api.post('class', {
           name: data.name,
           description: data.description,
         })

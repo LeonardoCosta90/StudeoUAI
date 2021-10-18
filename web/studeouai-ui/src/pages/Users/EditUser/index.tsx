@@ -115,7 +115,7 @@ const EditUser: React.FC = () => {
         <Toaster position="top-right" reverseOrder={false} />
          <BackButtonTitleContainer>
           <BackButton>
-              <Link to="/dashboard">
+              <Link to="/class">
                 <span>
                   <FiArrowLeft
                     size={25}
@@ -127,9 +127,10 @@ const EditUser: React.FC = () => {
           </BackButton>
            <Title>Usuário</Title>    
         </BackButtonTitleContainer>
+         {user.avatar ? (
             <Avatar>
               <img src={user.avatar} alt="Avatar user" />
-            </Avatar>
+            </Avatar>):('')}
         <FormContainer>
          
           <Form ref={formRef} onSubmit={handleSubmit}>

@@ -64,6 +64,7 @@ export class AuthenticateUserService {
         email: user.email,
         name: user.name,
         avatar: user.avatar,
+        isAdmin: user.isAdmin,
       },
       token,
       refresh_token,

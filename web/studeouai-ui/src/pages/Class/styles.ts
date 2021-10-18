@@ -77,7 +77,7 @@ export const Tbody = styled.div`
 
     height: 4rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
   }
 
@@ -87,6 +87,10 @@ export const Tbody = styled.div`
     font-weight: 400;
     text-align: center;
     color: #05233e;
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   td#buttons {

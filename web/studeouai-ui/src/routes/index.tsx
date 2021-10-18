@@ -5,8 +5,6 @@ import Route from './Route';
 
 import Login from '../pages/Login';
 
-import SimplePiston from '../pages/SimplePiston';
-
 import Users from '../pages/Users';
 import CreateUser from '../pages/Users/CreateUser';
 import EditUser from '../pages/Users/EditUser';
@@ -18,11 +16,13 @@ import EditCategory from '../pages/Categories/EditCategory';
 import Class from '../pages/Class';
 import Details from '../pages/Class/Details';
 import CreateClass from '../pages/Class/CreateClass';
-import EditCar from '../pages/Class/EditClass';
+
+import ForgotPass from '../pages/ForgotPass';
 
 import AttendedClass from '../pages/AttendedClass';
 import Welcome from '../pages/Welcome';
 import Register from '../pages/Register';
+import ResetPass from '../pages/ResetPass';
 
 const Routes: React.FC = () => {
   return (
@@ -31,8 +31,8 @@ const Routes: React.FC = () => {
         <Route path="/" exact component={Welcome} />
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
-
-        <Route path="/simple-piston" exact component={SimplePiston} isPrivate />
+        <Route path="/forgot-pass" exact component={ForgotPass} />
+        <Route path="/reset-pass" exact component={ResetPass} />
 
         <Route path="/users" exact component={Users} isPrivate />
         <Route path="/users/create-user" exact component={CreateUser} isPrivate />
@@ -43,9 +43,8 @@ const Routes: React.FC = () => {
         <Route path="/categories/edit-category" exact component={EditCategory} isPrivate />
 
         <Route path="/class" exact component={Class} isPrivate />
-        <Route path="/class/details" exact component={Details} isPrivate />
+        <Route path="/class/details-class" exact component={Details} isPrivate />
         <Route path="/class/create-class" exact component={CreateClass} isPrivate />
-        <Route path="/class/edit-class" exact component={EditCar} isPrivate />
 
         <Route path="/attended-class" exact component={AttendedClass} isPrivate />
       </Switch>

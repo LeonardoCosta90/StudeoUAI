@@ -16,6 +16,8 @@ export class ClassRepository extends Repository<Class> {
     const _class = this.create({
       id,
       available: true,
+      type: 'Tradicional',
+      url: '',
       category_id,
       description,
       name,
@@ -25,13 +27,19 @@ export class ClassRepository extends Repository<Class> {
     return _class;
   }
 
+  async deleteClass(id: string): Promise<void> {
+    await this.delete({
+      id,
+    });
+  }
+
   async listClass(): Promise<Class[]> {
     const _class = await this.find();
     return _class;
   }
 
   async findClassById(id: string): Promise<Class> {
-    const _class = await this.repository.findOne({ id });
+    const _class = await this.findOne({ where: { id: id } });
     return _class;
   }
 

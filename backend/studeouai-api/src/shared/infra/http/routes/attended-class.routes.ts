@@ -17,4 +17,11 @@ attendedClassRoutes.post(
   attendedClassController.attendedClass,
 );
 
+attendedClassRoutes.get(
+  '/',
+  ensureAuthenticated,
+  validateBody(validation.attendedClassValidation),
+  attendedClassController.findAttendedClass,
+);
+
 export { attendedClassRoutes };

@@ -30,6 +30,12 @@ class Class {
   @Column()
   category_id: string;
 
+  @Column()
+  type: string;
+
+  @Column()
+  url: string;
+
   @ManyToOne(() => Category)
   @JoinColumn({
     name: 'category_id',

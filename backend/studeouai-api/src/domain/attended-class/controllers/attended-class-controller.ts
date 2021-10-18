@@ -14,4 +14,20 @@ export class AttendedClassController {
 
     return response.status(201).json(attendedClass);
   }
+
+  async findAttendedClass(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { user_id, class_id } = request.body;
+
+    const attendedClassService = new AttendedClassService();
+
+    const attendedClass = await attendedClassService.findByUserAndClass({
+      user_id,
+      class_id,
+    });
+
+    return response.status(200).json(attendedClass);
+  }
 }

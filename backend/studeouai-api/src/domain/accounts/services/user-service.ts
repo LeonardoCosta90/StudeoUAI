@@ -15,7 +15,7 @@ export class UserService {
     const emailExists = await usersRepository.findByEmail(email);
 
     if (emailExists) {
-      throw new AppError('Email address already used.');
+      throw new AppError('Email address already used.', 404);
     }
 
     const passwordHash = await hash(

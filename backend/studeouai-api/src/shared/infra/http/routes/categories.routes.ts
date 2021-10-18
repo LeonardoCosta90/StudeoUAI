@@ -38,4 +38,11 @@ categoriesRoutes.delete(
 
 categoriesRoutes.get('/', ensureAuthenticated, categoryController.listCategory);
 
+categoriesRoutes.get(
+  '/:id',
+  ensureAuthenticated,
+  validateParams(validation.idValidation),
+  categoryController.findCategoryById,
+);
+
 export { categoriesRoutes };

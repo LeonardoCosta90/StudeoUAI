@@ -14,7 +14,7 @@ router.use('/categories', categoriesRoutes);
 router.use('/specifications', specificationsRoutes);
 router.use('/users', usersRoutes);
 router.use('/class', classRoutes);
-router.use('/attendedClass', attendedClassRoutes);
+router.use('/attended-class', attendedClassRoutes);
 
 router.use('/password', passwordRoutes);
 

@@ -28,7 +28,7 @@ export class CategoryService {
     await categoriesRepo.deleteCategory(id);
   }
 
-  async findCategoryById(id: string): Promise<Category[]> {
+  async findCategoryById(id: string): Promise<Category> {
     const categoriesRepo = getCustomRepository(CategoriesRepository);
     const categoryExist = await categoriesRepo.findCategoryById(id);
 
@@ -36,7 +36,7 @@ export class CategoryService {
       throw new AppError('Category does not exists.');
     }
 
-    return categoryExist[0];
+    return categoryExist;
   }
 
   async listCategory(): Promise<Category[]> {

@@ -59,7 +59,7 @@ export function Login() {
         password: data.password,
       });
 
-      history.push('/simple-piston');
+      history.push('/class');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = validationErrors(err);
@@ -116,7 +116,7 @@ export function Login() {
             />
 
             <div className="recuperation">
-              <Link to="/login/reset-password">
+              <Link to="/forgot-pass">
                 <span>Esqueceu a senha?</span>
                 <span className="error-password">{error}</span>
               </Link>
