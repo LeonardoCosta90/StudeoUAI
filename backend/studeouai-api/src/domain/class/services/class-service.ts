@@ -8,6 +8,7 @@ import { ClassImagesRepository } from '../typeorm/repositories/class-images-repo
 import { ClassRepository } from '../typeorm/repositories/class-repository';
 import { CreateClassRequest } from '../models/create-class-request';
 import { S3StorageProvider } from '@shared/providers/storage-provider/s3-storage-provider';
+import { AttendedClassRepository } from '@domain/attended-class/typeorm/repositories/attended-class-repository';
 
 export class ClassService {
   async createClass({
@@ -24,12 +25,19 @@ export class ClassService {
 
     const _class = classRepo.createClass({
       available: true,
+      type: 'Tradicional',
+      url: '',
       name,
       description,
       category_id,
     });
 
     return _class;
+  }
+
+  async deleteClass(id: string): Promise<void> {
+    const classRepo = getCustomRepository(ClassRepository);
+    await classRepo.deleteClass(id);
   }
 
   async listClass(): Promise<Class[]> {

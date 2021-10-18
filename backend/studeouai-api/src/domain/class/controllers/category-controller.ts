@@ -30,6 +30,18 @@ export class CategoryController {
     return response.json(categories);
   }
 
+  async findCategoryById(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id } = request.params;
+
+    const categoryService = new CategoryService();
+    const category = await categoryService.findCategoryById(id);
+
+    return response.json(category);
+  }
+
   async listCategory(request: Request, response: Response): Promise<Response> {
     const categoryService = new CategoryService();
     const categories = await categoryService.listCategory();

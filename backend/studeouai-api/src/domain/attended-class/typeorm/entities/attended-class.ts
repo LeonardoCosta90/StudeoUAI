@@ -9,16 +9,10 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Class } from 'domain/class/typeorm/entities/class';
-
 @Entity('attended_class')
-class AttendedClass extends Class {
+class AttendedClass {
   @PrimaryColumn()
   id: string;
-
-  @ManyToOne(() => Class)
-  @JoinColumn({ name: 'class_id' })
-  class: Class;
 
   @Column()
   class_id: string;
@@ -36,7 +30,6 @@ class AttendedClass extends Class {
   updated_at: Date;
 
   constructor() {
-    super();
     if (!this.id) {
       this.id = uuidV4();
       this.created_at = new Date();

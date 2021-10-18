@@ -96,6 +96,7 @@ export const Tbody = styled.div`
   }
 `;
 
+
 export const ButtonDelete = styled.button`
   display: flex;
   flex-direction: row;

@@ -54,7 +54,7 @@ export class SendForgotPasswordMailService {
 
     const templateVariables = {
       name: user.name,
-      link: `${process.env.FORGOT_MAIL_URL}${token}`,
+      link: token,
     };
 
     const templateFileContent = fs.readFileSync(templatePath).toString('utf-8');

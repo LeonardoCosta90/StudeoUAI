@@ -29,6 +29,7 @@ import {
   BackButtonTitleContainer,
   BackButton,
 } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 interface Category {
   id: string;
@@ -37,6 +38,7 @@ interface Category {
 }
 
 const Categories: React.FC = () => {
+  const { user } = useAuth();
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -96,7 +98,7 @@ const Categories: React.FC = () => {
         <Toaster position="top-right" reverseOrder={false} />
          <BackButtonTitleContainer>
           <BackButton>
-              <Link to="/dashboard">
+              <Link to="/">
                 <span>
                   <FiArrowLeft
                     size={25}
@@ -110,12 +112,14 @@ const Categories: React.FC = () => {
         </BackButtonTitleContainer>
            
         
-        <ContainerHeader>
-          <Link to="categories/create-category">
-            <Button type="submit">Nova categoria</Button>
-          </Link>
-        </ContainerHeader>
-
+        {user.isAdmin ? (
+          <ContainerHeader>
+            <Link to="categories/create-category">
+              <Button type="submit">Nova categoria</Button>
+            </Link>
+          </ContainerHeader>              
+        ): ('')}
+        {user.isAdmin ? (  
         <TableContainer>
           <Thead>
             <tr>
@@ -157,6 +161,9 @@ const Categories: React.FC = () => {
               ))}
           </Tbody>
         </TableContainer>
+        ): (
+           <Title>Sem permissão</Title> 
+        )}
       </Body>
     </Container>
   );

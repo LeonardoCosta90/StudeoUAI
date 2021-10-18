@@ -24,6 +24,7 @@ import {
 } from './styles';
 import Input from '../../../components/Input';
 import validationErrors from '../../../utils/validateErrors';
+import { useAuth } from '../../../hooks/auth';
 
 interface UserFormData {
   name: string;
@@ -50,9 +51,18 @@ const CreateClass: React.FC = () => {
 
   function handleSelectChange(event: ChangeEvent<HTMLSelectElement>) {
     const { value } = event.target;
-    console.log(value)
-
+    console.log(value.toString())
     setCategory_id(value);
+  }
+
+  function createSuccess(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Aula criada com sucesso!',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   function createError() {
@@ -63,44 +73,20 @@ const CreateClass: React.FC = () => {
     );
   }
 
-  const handleSubmit = useCallback(
+   const handleSubmit = useCallback(
     async (data: UserFormData) => {
       try {
-        formRef.current?.setErrors({});
-
-        const schema = Yup.object().shape({
-          name: Yup.string().required('Nome obrigatório.'),
-          description: Yup.string().required('Descrição obrigatória.'),
-        });
-
-        await schema.validate(data, {
-          abortEarly: false,
-        });
-
-        console.log(data.name, data.description, category_id)
 
         await api.post('class', {
           name: data.name,
           description: data.description,
-          category_id,
+          category_id: category_id
         })
 
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Aula criada com sucesso!',
-          showConfirmButton: false,
-          timer: 1500
-        })
+        createSuccess();        
         history.push('/class');
       } catch (error) {
-        if (error instanceof Yup.ValidationError) {
-          const errors = validationErrors(error);
 
-          formRef.current?.setErrors(errors);
-
-          return;
-        }
         createError();
       }
     },
@@ -154,7 +140,7 @@ const CreateClass: React.FC = () => {
                 id="category_id"
                 onChange={handleSelectChange}
               >
-                <option disabled>Selecione uma categoria</option>
+                <option value="" selected disabled hidden>Selecione uma categoria</option>
                   {
                     categories.length > 0 &&
                       categories.map(category => (

@@ -53,9 +53,9 @@ const Header: React.FC = () => {
             <IconContext.Provider value={{ color: '#fff'}}>
                 <Nav>
                     <NavbarContainer>
-                        <NavLogo to="/simple-piston">
+                        <NavLogo to="/class">
                           <Logo>
-                            <Link to="/simple-piston">
+                            <Link to="/class">
                               <img src={logo} alt="Logo StudeoUAI" />
                             </Link>
                           </Logo>
@@ -65,12 +65,15 @@ const Header: React.FC = () => {
                         </MenuIcon>
 
                         <Menu onClick={handleClick} >
-                            <MenuItem>
-                                <MenuLink onClick={closeMenu} to="/simple-piston">Pistão</MenuLink>
-                            </MenuItem>
-                            <MenuItem>
-                                <MenuLink onClick={closeMenu} to="/categories">Categorias</MenuLink>
-                            </MenuItem>
+
+                            {
+                              user.isAdmin ? (
+                                <MenuItem>
+                                    <MenuLink onClick={closeMenu} to="/categories">Categorias</MenuLink>
+                                </MenuItem>
+                              ): ('') 
+                            }
+                            
                             <MenuItem>
                                 <MenuLink onClick={closeMenu} to="/class">Aulas</MenuLink>
                             </MenuItem>
@@ -83,13 +86,18 @@ const Header: React.FC = () => {
                                   },
                                 }}>{user.name}</MenuLink>
                             </MenuItem>
-                            <MenuItem>
-                              <Avatar>
-                                <Link to="/users/edit-user">
-                                  <img src={user.avatar} alt="Avatar user" />
-                                </Link>
-                              </Avatar>
-                            </MenuItem>
+                            {
+                              user.avatar ? (
+                                <MenuItem>
+                                  <Avatar>
+                                    <Link to="/users/edit-user">
+                                      <img src={user.avatar} alt="Avatar user" />                                  
+                                    </Link>
+                                  </Avatar>
+                                </MenuItem>
+                              ): ('')
+                            }
+                            
                             <MenuItem>
                               <MenuLink onClick={signOut} to="/">Sair</MenuLink>
                             </MenuItem>

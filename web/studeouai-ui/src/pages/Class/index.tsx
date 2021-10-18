@@ -11,7 +11,7 @@ import api from '../../services/api';
 
 import { RiCloseCircleFill } from 'react-icons/ri';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FiArrowLeft, FiEdit2 } from 'react-icons/fi';
+import { FiArrowLeft, FiEdit2, FiEye } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button'
@@ -29,14 +29,21 @@ import {
   BackButtonTitleContainer,
   BackButton,
 } from './styles';
+import { useAuth } from '../../hooks/auth';
+import { type } from 'os';
+import { url } from 'inspector';
 
 interface Classes {
   id: string;
   name: string;
   description: string;
+  type: string;
+  url: string;
+  category_id: string;
 }
 
 const Class: React.FC = () => {
+  const { user } = useAuth();
   const [classes, setClasses] = useState<Classes[]>([]);
 
   useEffect(() => {
@@ -54,7 +61,6 @@ const Class: React.FC = () => {
   function deleteError() {
     Swal.fire('Erro!', 'Ocorreu um erro ao deletar a aula.', 'error');
   }
-
 
   async function deleteClass(id: string) {
     try {
@@ -95,34 +101,21 @@ const Class: React.FC = () => {
       <Header />
       <Body>
         <Toaster position="top-right" reverseOrder={false} />
-         <BackButtonTitleContainer>
-          <BackButton>
-              <Link to="/simple-piston">
-                <span>
-                  <FiArrowLeft
-                    size={25}
-                    color={'#3D3D4D'}
-                  />
-                </span>
-              </Link>
-
-          </BackButton>
-           <Title>Aulas</Title>    
-        </BackButtonTitleContainer>
-           
-        
+           <Title>Aulas</Title>              
+       {user.isAdmin ? (
         <ContainerHeader>
           <Link to="class/create-class">
             <Button type="submit">Nova aula</Button>
           </Link>
-        </ContainerHeader>
-
+        </ContainerHeader>)
+        : ('')}
+        
         <TableContainer>
           <Thead>
             <tr>
               <th>Nome</th>
+              <th>Tipo</th>
               <th>Descrição</th>
-              <th>Categoria</th>
               <th>Ações</th>
             </tr>
           </Thead>
@@ -131,8 +124,10 @@ const Class: React.FC = () => {
               classes.map(classes => (
                 <tr key={classes.id}>
                   <td>{classes.name}</td>
+                  <td>{classes.type}</td>
                   <td>{classes.description}</td>
                   <td id="buttons">
+                    {user.isAdmin ? (
                     <ButtonDelete
                       type="button"
                       id="delete"
@@ -140,18 +135,21 @@ const Class: React.FC = () => {
                     >
                       <RiCloseCircleFill />
                     </ButtonDelete>
+                    ): ('')}
                     <Link
                       to={{
-                        pathname: 'class/edit-class',
+                        pathname: 'class/details-class',
                         state: {
                           id: classes.id,
                           name: classes.name,
                           description: classes.description,
+                          type: classes.type,
+                          url: classes.url,
                         },
                       }}
                     >
                       <ButtonEdit type="button">
-                        <FiEdit2 />
+                        <FiEye />
                       </ButtonEdit>
                     </Link>
                   </td>

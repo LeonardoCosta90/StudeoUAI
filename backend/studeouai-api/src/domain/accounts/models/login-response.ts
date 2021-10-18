@@ -4,6 +4,7 @@ export interface LoginResponse {
     name: string;
     email: string;
     avatar: string;
+    isAdmin: boolean;
   };
   token: string;
   refresh_token: string;

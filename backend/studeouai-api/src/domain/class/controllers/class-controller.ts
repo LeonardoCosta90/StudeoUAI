@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { ImageRequest } from '../models/image-request';
+import { CategoryService } from '../services/category-service';
 
 import { ClassService } from '../services/class-service';
 
@@ -33,6 +34,14 @@ export class ClassController {
     });
 
     return response.status(201).send();
+  }
+
+  async deleteClass(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const classService = new ClassService();
+    await classService.deleteClass(id);
+
+    return response.status(204).send();
   }
 
   async listClass(request: Request, response: Response): Promise<Response> {

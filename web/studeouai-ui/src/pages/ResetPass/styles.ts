@@ -1,10 +1,14 @@
-import { shade } from 'polished';
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  background: #EEEEF2;
+
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 
   h1 {
@@ -12,35 +16,48 @@ export const Container = styled.div`
     color: #3D3D4D;
     margin-bottom: 24px;
   }
+
+  h3 {
+    font-size: 24px;
+    color: #7A7A80;
+    text-align: center;
+    line-height: 32px;
+    margin-bottom: 48px
+  }
+
 `;
 
-export const BackButtonTitleContainer = styled.div`
-  width: 85%;
+export const Body = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`
 
-export const BackButton = styled.div`
+  flex-wrap: wrap;
+  width: 30rem;
+  height: 26rem;
+
+  padding: 2.25rem;
+
+  background: #dbdbdb;
+  border-radius: 0.625rem;
+  box-shadow: 0.625rem 0.625rem 0.25rem rgba(0, 0, 0, 0.25);
+`;
+
+export const LogoContainer = styled.div`
   width: 100%;
-`
-
-export const ContainerHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 8rem;
+  }
 `;
 
-export const TitleContainer = styled.div`
-  width: 85%;
-`
 export const FormContainer = styled.div`
   width: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
 
   p {
     font-family: 'Poppins' sans-serif;
@@ -77,7 +94,7 @@ export const FormContainer = styled.div`
 
 export const FormButton = styled.div`
   width: 100%;
-  height: 5rem;
+  height: 2.5rem;
 
   display: flex;
   flex-direction: column;
@@ -116,18 +133,14 @@ export const Button = styled.button`
 `;
 
 export const Text = styled.p`
-  font-weight: 700;
-  font-size: 20rem;
+  font-weight: 500;
+  font-size: 1rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 `;
 
-
-export const Span = styled.span`
-  font-weight: 700;
-  font-size: 3rem;
-  margin-top: 3rem;
-  margin-bottom: 0.5rem;
-`;
-
-
+export const BackButton = styled.div`
+  position: absolute;
+  left: 90px;
+  top: 50px;
+`

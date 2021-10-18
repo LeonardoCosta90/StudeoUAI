@@ -28,7 +28,7 @@ const Route: React.FC<RouteProps> = ({
         ) : (
           <Redirect
             to={{
-              pathname: isPrivate ? '/' : '/simple-piston',
+              pathname: isPrivate ? '/' : '/class',
               state: { from: location },
             }}
           />

@@ -16,12 +16,7 @@ const specificationClassController = new SpecificationClassController();
 
 const uploadClassImages = multer(uploadConfig);
 
-classRoutes.get(
-  '/',
-  ensureAuthenticated,
-  ensureAdmin,
-  classController.listClass,
-);
+classRoutes.get('/', ensureAuthenticated, classController.listClass);
 
 classRoutes.post(
   '/',
@@ -29,6 +24,14 @@ classRoutes.post(
   ensureAdmin,
   validateBody(validation.createClassValidation),
   classController.createClass,
+);
+
+classRoutes.delete(
+  '/:id',
+  ensureAuthenticated,
+  ensureAdmin,
+  validateParams(validation.idValidation),
+  classController.deleteClass,
 );
 
 classRoutes.post(

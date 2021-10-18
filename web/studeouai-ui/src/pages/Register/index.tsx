@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiLogIn,} from 'react-icons/fi';
 import { AiOutlineUser, AiOutlineLock, AiOutlineMail } from 'react-icons/ai';
@@ -23,58 +23,68 @@ import {
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import validationErrors from '../../utils/validateErrors';
 import toast, { Toaster } from 'react-hot-toast';
-interface SignInFormData {
+import api from '../../services/api'
+import Swal from 'sweetalert2';
+import { error } from 'console';
+
+interface UserFormData {
   name: string;
   email: string;
   password: string;
 }
 
-export function Login() {
+export function Register() {
   const formRef = useRef<FormHandles>(null);
-  const [error, setError] = useState('');
-
-  const { signIn } = useAuth();
-
   const history = useHistory();
 
-  async function handleSubmit(data: SignInFormData) {
-    try {
-      formRef.current?.setErrors({});
-
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome obrigatório.'),
-        email: Yup.string()
-          .required('E-mail obrigatório')
-          .email('Digite um e-mail válido'),
-
-        password: Yup.string().required('Senha obrigatória'),
-      });
-
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-
-      await signIn({
-        email: data.email,
-        password: data.password,
-      });
-
-      toast.success('Usuário cadastrado com sucesso!');
-      history.push('/simple-piston');
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = validationErrors(err);
-
-        formRef.current?.setErrors(errors);
-
-        return;
-      }
-       toast.error('O email já se encontra em uso!');
-    }
+  function createUserSuccess() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Usuário criado com sucesso!!!',
+      showConfirmButton: false,
+        timer: 1500
+  })
   }
 
+  function createUserExistsError() {
+    Swal.fire(
+      'Erro!',
+      'Ocorreu um erro ao criar o usuário, email ja se encontra em uso!!!.',
+      'error',
+    );
+  }
+
+  const handleSubmit = useCallback(
+    async (data: UserFormData) => {
+      try {
+        formRef.current?.setErrors({});
+
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório.'),
+          email: Yup.string().required('Email obrigatório.'),
+          password: Yup.string().required('Senha obrigatória.'),
+        });
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        await api.post('users', {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        })
+
+        createUserSuccess();
+        history.push('/');
+      } catch (error) {      
+        createUserExistsError();
+      }
+    },
+    [history],
+  );
   return (
     <Container>
        <BackButton>
@@ -134,4 +144,4 @@ export function Login() {
   );
 }
 
-export default Login;
+export default Register;
