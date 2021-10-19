@@ -10,18 +10,4 @@ const attendedClassRoutes = Router();
 
 const attendedClassController = new AttendedClassController();
 
-attendedClassRoutes.post(
-  '/',
-  ensureAuthenticated,
-  validateBody(validation.attendedClassValidation),
-  attendedClassController.attendedClass,
-);
-
-attendedClassRoutes.get(
-  '/',
-  ensureAuthenticated,
-  validateBody(validation.attendedClassValidation),
-  attendedClassController.findAttendedClass,
-);
-
 export { attendedClassRoutes };

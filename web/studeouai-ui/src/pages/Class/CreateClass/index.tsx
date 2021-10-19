@@ -51,7 +51,6 @@ const CreateClass: React.FC = () => {
 
   function handleSelectChange(event: ChangeEvent<HTMLSelectElement>) {
     const { value } = event.target;
-    console.log(value.toString())
     setCategory_id(value);
   }
 
@@ -90,7 +89,7 @@ const CreateClass: React.FC = () => {
         createError();
       }
     },
-    [history],
+    [history, category_id],
   );
 
   return (

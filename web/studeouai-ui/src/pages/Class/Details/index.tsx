@@ -28,6 +28,7 @@ import {
 import ReactPlayer from 'react-player';
 import { useAuth } from '../../../hooks/auth';
 import axios from 'axios';
+import ButtonDisable from '../../../components/ButtonDisable';
 
 interface CategoryFormData {
   name: string;
@@ -51,32 +52,20 @@ const DetailsClass: React.FC = () => {
   const location = useLocation();
   const classes = location.state as Class;
 
-  function editSuccess() {
-    Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Categoria editada com sucesso!',
-    showConfirmButton: false,
-    timer: 1500
-})
-  }
+  const [attended, setAttended] = useState<string>()
 
-  function editError() {
-    Swal.fire(
-      'Erro!',
-      'Ocorreu um erro ao editar a categoria, insera os dados corretamente!.',
-      'error',
-    );
-  }  
+  useEffect(() => {
+    api.get(`attended-class/${classes.id}` ).then(response => {
+      console.log(response.data);
+      setAttended(response.data);
+    })
+   }, [])
 
   const handleSubmit = useCallback(
     async (data: CategoryFormData) => {
       try {
         
-        await api.post('attended-class', {
-          class_id: classes.id,
-          user_id: user.id,
-        })
+        await api.post(`attended-class/${classes.id}`)
 
       } catch (error) {
         console.error(error);
@@ -127,11 +116,8 @@ const DetailsClass: React.FC = () => {
             </Span>
 
             <Text         
-            > {classes.description}</Text>
+            > {classes.description}</Text>            
             
-            <FormButton>
-              <Button type="submit" >Marcar como finalizada</Button>
-            </FormButton>
           </Form>
         </FormContainer>
      
@@ -143,3 +129,7 @@ const DetailsClass: React.FC = () => {
 }
 
 export default DetailsClass
+
+function foo(arg0: string, data: any, foo: any, arg3: string) {
+  throw new Error('Function not implemented.');
+}

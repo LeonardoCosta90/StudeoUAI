@@ -150,11 +150,11 @@ const EditUser: React.FC = () => {
 
             <Input id="email" name="email" placeholder={user.email}/>            
 
-            <FormButton>
+            {/* <FormButton>
               <Button type="submit">
                 <span>Salvar</span>
               </Button>
-            </FormButton>
+            </FormButton> */}
           </Form>
         </FormContainer>
 
