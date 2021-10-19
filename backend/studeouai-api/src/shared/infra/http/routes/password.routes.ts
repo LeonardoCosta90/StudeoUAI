@@ -15,10 +15,6 @@ passwordRoutes.post(
   validateBody(validation.getEmailValidation),
   sendForgotPasswordMailController.sendForgotPasswordMail,
 );
-passwordRoutes.post(
-  '/reset',
-
-  resetUsersPasswordController.resetUsersPassword,
-);
+passwordRoutes.post('/reset', resetUsersPasswordController.resetUsersPassword);
 
 export { passwordRoutes };

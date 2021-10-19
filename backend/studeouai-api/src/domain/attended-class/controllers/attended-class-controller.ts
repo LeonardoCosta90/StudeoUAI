@@ -3,7 +3,8 @@ import { AttendedClassService } from '../services/attended-class-service';
 
 export class AttendedClassController {
   async attendedClass(request: Request, response: Response): Promise<Response> {
-    const { user_id, class_id } = request.body;
+    const { id: user_id } = request.user;
+    const { class_id } = request.params;
 
     const attendedClassService = new AttendedClassService();
 
@@ -19,7 +20,8 @@ export class AttendedClassController {
     request: Request,
     response: Response,
   ): Promise<Response> {
-    const { user_id, class_id } = request.body;
+    const { id: user_id } = request.user;
+    const { class_id } = request.params;
 
     const attendedClassService = new AttendedClassService();
 
